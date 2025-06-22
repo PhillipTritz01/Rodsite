@@ -1,107 +1,154 @@
-<x-app-layout>
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-green-800 to-blue-900 text-white py-24">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6">{{ __('Photography') }}</h1>
-                <p class="text-xl text-gray-200">
-                    {{ __('Capturing moments and creating memories through professional photography') }}
-                </p>
-            </div>
-        </div>
-    </section>
+@extends('layouts.app')
 
-    <!-- Photo Gallery -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
-            <!-- Gallery Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                @for($i = 1; $i <= 12; $i++)
-                    @php
-                        $heights = ['h-64', 'h-80', 'h-72', 'h-96'];
-                        $gradients = [
-                            'from-pink-400 to-red-500',
-                            'from-blue-400 to-purple-500', 
-                            'from-green-400 to-blue-500',
-                            'from-yellow-400 to-orange-500',
-                            'from-purple-400 to-pink-500',
-                            'from-indigo-400 to-blue-500'
-                        ];
-                        $height = $heights[($i - 1) % count($heights)];
-                        $gradient = $gradients[($i - 1) % count($gradients)];
-                    @endphp
-                    <div class="bg-gradient-to-br {{ $gradient }} {{ $height }} rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
-                        <div class="w-full h-full flex items-center justify-center text-white">
-                            <div class="text-center">
-                                <svg class="w-8 h-8 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                                </svg>
-                                <p class="text-xs opacity-75">{{ __('Photo') }} {{ $i }}</p>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-        </div>
-    </section>
-
-    <!-- Photography Services -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">{{ __('Photography Services') }}</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    {{ __('Professional photography services tailored to your needs') }}
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Portrait Photography -->
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-lg mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('Portrait Photography') }}</h3>
-                    <p class="text-gray-600">{{ __('Professional headshots and personal portraits that capture your unique personality.') }}</p>
-                </div>
-
-                <!-- Family Photography -->
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-lg mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('Family Photography') }}</h3>
-                    <p class="text-gray-600">{{ __('Family photoshoots that preserve precious moments and create lasting memories.') }}</p>
-                </div>
-
-                <!-- Product Photography -->
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg mb-4 flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">{{ __('Product Photography') }}</h3>
-                    <p class="text-gray-600">{{ __('High-quality product photography that helps your business stand out and drive sales.') }}</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-20 bg-gray-900 text-white">
-        <div class="container mx-auto px-4 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-6">{{ __('Book your photo session') }}</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                {{ __('Ready to capture your special moments? Let\'s schedule your photography session today.') }}
+@section('content')
+<!-- Photo Hero -->
+<section class="relative py-32 bg-gradient-to-br from-[#111111] via-gray-900 to-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Photography</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Capturing moments that tell your story
             </p>
-            <a href="{{ route('contact') }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-colors">
-                {{ __('Book Now') }}
-            </a>
         </div>
-    </section>
-</x-app-layout>
+    </div>
+</section>
+
+<!-- Photo Gallery -->
+<section class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Portfolio Gallery</h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                A showcase of our photography work across different styles and subjects.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Photo 1 -->
+            <div class="bg-gradient-to-br from-amber-900/20 to-black rounded-lg overflow-hidden aspect-square">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <p class="text-gray-400 text-sm">Portrait Session</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="bg-gradient-to-br from-blue-900/20 to-black rounded-lg overflow-hidden aspect-[4/5]">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <p class="text-gray-400 text-sm">Event Photography</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="bg-gradient-to-br from-purple-900/20 to-black rounded-lg overflow-hidden aspect-[3/4]">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <p class="text-gray-400 text-sm">Product Photography</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="bg-gradient-to-br from-green-900/20 to-black rounded-lg overflow-hidden aspect-video lg:col-span-2">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <p class="text-gray-400 text-sm">Landscape Photography</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Photo 5 -->
+            <div class="bg-gradient-to-br from-yellow-900/20 to-black rounded-lg overflow-hidden aspect-square">
+                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div class="text-center">
+                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <p class="text-gray-400 text-sm">Corporate Headshots</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Photography Services -->
+<section class="py-20 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Photography Services</h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                Professional photography services for every need and occasion.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-amber-500 mb-3">Portrait Photography</h3>
+                <p class="text-gray-300 mb-4">Professional portraits that capture personality and style.</p>
+                <ul class="text-gray-400 text-sm space-y-1">
+                    <li>• Individual portraits</li>
+                    <li>• Family photography</li>
+                    <li>• Senior portraits</li>
+                    <li>• Professional headshots</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-amber-500 mb-3">Event Photography</h3>
+                <p class="text-gray-300 mb-4">Capturing special moments and celebrations.</p>
+                <ul class="text-gray-400 text-sm space-y-1">
+                    <li>• Wedding photography</li>
+                    <li>• Corporate events</li>
+                    <li>• Birthday parties</li>
+                    <li>• Graduation ceremonies</li>
+                </ul>
+            </div>
+
+            <div class="bg-gray-900/50 p-6 rounded-lg">
+                <h3 class="text-xl font-semibold text-amber-500 mb-3">Commercial Photography</h3>
+                <p class="text-gray-300 mb-4">Professional imagery for business and marketing.</p>
+                <ul class="text-gray-400 text-sm space-y-1">
+                    <li>• Product photography</li>
+                    <li>• Real estate photography</li>
+                    <li>• Food photography</li>
+                    <li>• Architecture photography</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-[#111111]">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready for Your Photo Session?</h2>
+        <p class="text-xl mb-8 text-gray-300">
+            Let's capture your special moments with professional photography that tells your story.
+        </p>
+        <a href="{{ route('contact') }}" class="inline-block bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+            Book Your Session
+        </a>
+    </div>
+</section>
+@endsection 

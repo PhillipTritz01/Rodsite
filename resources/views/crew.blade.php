@@ -1,200 +1,184 @@
-<x-app-layout>
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-gray-800 to-blue-900 text-white py-24">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-5xl md:text-6xl font-bold mb-6">{{ __('The Crew') }}</h1>
-                <p class="text-xl text-gray-200">
-                    {{ __('Meet the talented team behind Starset Media\'s creative vision') }}
-                </p>
-            </div>
-        </div>
-    </section>
+@extends('layouts.app')
 
-    <!-- Team Members -->
-    <section class="py-20 bg-white">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-                <!-- Rodrigo Henriquez -->
-                <div class="text-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Rodrigo Henriquez</h3>
-                    <p class="text-blue-600 font-semibold mb-4">{{ __('Creative Director') }}</p>
-                    <p class="text-gray-600 mb-4">
-                        {{ __('Passionate filmmaker and creative visionary with years of experience in bringing stories to life through innovative media production.') }}
-                    </p>
-                    <div class="text-gray-500 space-y-1">
-                        <p>📍 Lethbridge, AB</p>
-                        <p>📞 403-393-7411</p>
-                    </div>
-                </div>
-
-                <!-- Jared Middlebrook -->
-                <div class="text-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-green-500 to-blue-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Jared Middlebrook</h3>
-                    <p class="text-blue-600 font-semibold mb-4">{{ __('Technical Director') }}</p>
-                    <p class="text-gray-600 mb-4">
-                        {{ __('Expert in technical production and post-production workflows, ensuring every project meets the highest quality standards.') }}
-                    </p>
-                    <div class="text-gray-500 space-y-1">
-                        <p>📍 Calgary, AB</p>
-                        <p>📞 403-680-6178</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 3 -->
-                <div class="text-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ __('Sarah Thompson') }}</h3>
-                    <p class="text-blue-600 font-semibold mb-4">{{ __('Lead Photographer') }}</p>
-                    <p class="text-gray-600 mb-4">
-                        {{ __('Skilled photographer with an eye for detail and a passion for capturing authentic moments and emotions.') }}
-                    </p>
-                    <div class="text-gray-500 space-y-1">
-                        <p>📍 Calgary, AB</p>
-                        <p>📧 sarah@starsetmedia.ca</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 4 -->
-                <div class="text-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-yellow-500 to-red-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ __('Alex Chen') }}</h3>
-                    <p class="text-blue-600 font-semibold mb-4">{{ __('Graphic Designer') }}</p>
-                    <p class="text-gray-600 mb-4">
-                        {{ __('Creative designer specializing in brand identity and visual storytelling through innovative graphic design solutions.') }}
-                    </p>
-                    <div class="text-gray-500 space-y-1">
-                        <p>📍 Lethbridge, AB</p>
-                        <p>📧 alex@starsetmedia.ca</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 5 -->
-                <div class="text-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ __('Maya Rodriguez') }}</h3>
-                    <p class="text-blue-600 font-semibold mb-4">{{ __('Editor & Colorist') }}</p>
-                    <p class="text-gray-600 mb-4">
-                        {{ __('Post-production specialist with expertise in video editing and color grading to bring your vision to life.') }}
-                    </p>
-                    <div class="text-gray-500 space-y-1">
-                        <p>📍 Calgary, AB</p>
-                        <p>📧 maya@starsetmedia.ca</p>
-                    </div>
-                </div>
-
-                <!-- Team Member 6 -->
-                <div class="text-center">
-                    <div class="w-48 h-48 bg-gradient-to-br from-teal-500 to-green-600 rounded-full mx-auto mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-2">{{ __('David Kim') }}</h3>
-                    <p class="text-blue-600 font-semibold mb-4">{{ __('Sound Engineer') }}</p>
-                    <p class="text-gray-600 mb-4">
-                        {{ __('Audio specialist ensuring crystal clear sound quality for all our video and film productions.') }}
-                    </p>
-                    <div class="text-gray-500 space-y-1">
-                        <p>📍 Lethbridge, AB</p>
-                        <p>📧 david@starsetmedia.ca</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-20 bg-gray-50">
-        <div class="container mx-auto px-4 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">{{ __('Testimonials') }}</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                    {{ __('What our clients say about working with our team') }}
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <p class="text-gray-600 mb-4 italic">
-                        "{{ __('Use this space to share a testimonial quote about the business, its products or its services. Insert a quote from a real customer or client here to build trust and win over site visitors.') }}"
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
-                            JD
-                        </div>
-                        <div class="ml-3">
-                            <p class="font-semibold text-gray-900">{{ __('John Doe') }}</p>
-                            <p class="text-gray-500 text-sm">{{ __('Business Owner') }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <p class="text-gray-600 mb-4 italic">
-                        "{{ __('Use this space to share a testimonial quote about the business, its products or its services. Insert a quote from a real customer or client here to build trust and win over site visitors.') }}"
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                            JS
-                        </div>
-                        <div class="ml-3">
-                            <p class="font-semibold text-gray-900">{{ __('Jane Smith') }}</p>
-                            <p class="text-gray-500 text-sm">{{ __('Marketing Director') }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-lg p-6 shadow-lg">
-                    <p class="text-gray-600 mb-4 italic">
-                        "{{ __('Use this space to share a testimonial quote about the business, its products or its services. Insert a quote from a real customer or client here to build trust and win over site visitors.') }}"
-                    </p>
-                    <div class="flex items-center">
-                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-semibold">
-                            MB
-                        </div>
-                        <div class="ml-3">
-                            <p class="font-semibold text-gray-900">{{ __('Mike Brown') }}</p>
-                            <p class="text-gray-500 text-sm">{{ __('Creative Director') }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-20 bg-gray-900 text-white">
-        <div class="container mx-auto px-4 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-6">{{ __('Work with our team') }}</h2>
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                {{ __('Ready to collaborate with our talented crew? Let\'s discuss your project and bring your vision to life.') }}
+@section('content')
+<!-- Crew Hero -->
+<section class="relative py-32 bg-gradient-to-br from-[#111111] via-gray-900 to-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Crew</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Meet the creative minds behind Starset Media
             </p>
-            <a href="{{ route('contact') }}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-colors">
-                {{ __('Start Collaboration') }}
-            </a>
         </div>
-    </section>
-</x-app-layout>
+    </div>
+</section>
+
+<!-- Core Team -->
+<section class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Core Team</h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                The passionate professionals driving our creative vision forward.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <!-- Rodrigo Henriquez -->
+            <div class="bg-black/50 p-8 rounded-lg text-center">
+                <div class="w-32 h-32 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <span class="text-3xl font-bold text-white">RH</span>
+                </div>
+                <h3 class="text-2xl font-bold text-amber-500 mb-2">Rodrigo Henriquez</h3>
+                <p class="text-xl text-gray-300 mb-4">Creative Director</p>
+                <p class="text-gray-400 mb-4 leading-relaxed">
+                    Rodrigo brings years of creative vision and artistic direction to every project. His passion for storytelling and attention to detail ensures that each piece of content we create has both impact and meaning.
+                </p>
+                <div class="text-gray-300 space-y-1">
+                    <p>📧 rodrigo@starsetmedia.ca</p>
+                    <p>📍 Lethbridge, Alberta</p>
+                </div>
+            </div>
+
+            <!-- Jared Middlebrook -->
+            <div class="bg-black/50 p-8 rounded-lg text-center">
+                <div class="w-32 h-32 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <span class="text-3xl font-bold text-white">JM</span>
+                </div>
+                <h3 class="text-2xl font-bold text-amber-500 mb-2">Jared Middlebrook</h3>
+                <p class="text-xl text-gray-300 mb-4">Technical Director</p>
+                <p class="text-gray-400 mb-4 leading-relaxed">
+                    Jared oversees the technical aspects of our productions, ensuring that every project meets the highest standards of quality. His expertise in post-production and technical workflows keeps our projects running smoothly.
+                </p>
+                <div class="text-gray-300 space-y-1">
+                    <p>📧 jared@starsetmedia.ca</p>
+                    <p>📍 Calgary, Alberta</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Extended Team -->
+<section class="py-20 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Extended Team</h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                Talented professionals who contribute their expertise to our projects.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-xl font-bold text-white">SJ</span>
+                </div>
+                <h3 class="text-lg font-bold text-amber-500 mb-1">Sarah Johnson</h3>
+                <p class="text-gray-300 mb-2">Lead Photographer</p>
+                <p class="text-gray-400 text-sm">Specializing in portrait and event photography with an eye for capturing authentic emotions.</p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-xl font-bold text-white">MT</span>
+                </div>
+                <h3 class="text-lg font-bold text-amber-500 mb-1">Mike Thompson</h3>
+                <p class="text-gray-300 mb-2">Video Editor</p>
+                <p class="text-gray-400 text-sm">Expert in post-production with a talent for creating compelling narratives through editing.</p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-xl font-bold text-white">AL</span>
+                </div>
+                <h3 class="text-lg font-bold text-amber-500 mb-1">Alex Liu</h3>
+                <p class="text-gray-300 mb-2">Graphic Designer</p>
+                <p class="text-gray-400 text-sm">Creative designer specializing in brand identity and visual communication.</p>
+            </div>
+
+            <!-- Team Member 4 -->
+            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <span class="text-xl font-bold text-white">EM</span>
+                </div>
+                <h3 class="text-lg font-bold text-amber-500 mb-1">Emma Martinez</h3>
+                <p class="text-gray-300 mb-2">Sound Engineer</p>
+                <p class="text-gray-400 text-sm">Audio specialist ensuring crystal clear sound quality in all our productions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                Hear from the people who have trusted us with their creative projects.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-black/50 p-6 rounded-lg">
+                <div class="mb-4">
+                    <div class="flex text-amber-500 mb-2">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Starset Media exceeded our expectations. Their creativity and professionalism made our corporate video stand out from the competition."</p>
+                </div>
+                <div class="border-t border-gray-700 pt-4">
+                    <p class="font-semibold text-amber-500">Jennifer Chen</p>
+                    <p class="text-gray-400 text-sm">Marketing Director, TechFlow Inc.</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="bg-black/50 p-6 rounded-lg">
+                <div class="mb-4">
+                    <div class="flex text-amber-500 mb-2">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">"The team captured our wedding day perfectly. Every moment was beautifully documented, and we'll treasure these memories forever."</p>
+                </div>
+                <div class="border-t border-gray-700 pt-4">
+                    <p class="font-semibold text-amber-500">David & Rachel Miller</p>
+                    <p class="text-gray-400 text-sm">Wedding Clients</p>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="bg-black/50 p-6 rounded-lg">
+                <div class="mb-4">
+                    <div class="flex text-amber-500 mb-2">
+                        <span>★★★★★</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">"Working with Starset Media was a game-changer for our brand. Their graphic design work elevated our entire visual identity."</p>
+                </div>
+                <div class="border-t border-gray-700 pt-4">
+                    <p class="font-semibold text-amber-500">Marcus Rodriguez</p>
+                    <p class="text-gray-400 text-sm">CEO, Urban Lifestyle Co.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-[#111111]">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Our Team?</h2>
+        <p class="text-xl mb-8 text-gray-300">
+            Let's collaborate and create something amazing together. Our team is ready to bring your vision to life.
+        </p>
+        <a href="{{ route('contact') }}" class="inline-block bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+            Get In Touch
+        </a>
+    </div>
+</section>
+@endsection 
