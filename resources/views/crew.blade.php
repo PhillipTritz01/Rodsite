@@ -5,164 +5,124 @@
 <section class="relative py-32 bg-gradient-to-br from-[#111111] via-gray-900 to-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Our Crew</h1>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                Meet the creative minds behind Starset Media
+            <h1 class="text-4xl md:text-6xl font-bold mb-6" data-aos="fade-up">Our Team</h1>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                With multiple areas of expertise, our dream team offers content creation services and assistance with any media needs.
             </p>
         </div>
     </div>
 </section>
 
-<!-- Core Team -->
+<!-- Team Members -->
 <section class="py-20 bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Core Team</h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                The passionate professionals driving our creative vision forward.
-            </p>
-        </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            <!-- Rodrigo Henriquez -->
-            <div class="bg-black/50 p-8 rounded-lg text-center">
-                <div class="w-32 h-32 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <span class="text-3xl font-bold text-white">RH</span>
-                </div>
-                <h3 class="text-2xl font-bold text-amber-500 mb-2">Rodrigo Henriquez</h3>
-                <p class="text-xl text-gray-300 mb-4">Creative Director</p>
-                <p class="text-gray-400 mb-4 leading-relaxed">
-                    Rodrigo brings years of creative vision and artistic direction to every project. His passion for storytelling and attention to detail ensures that each piece of content we create has both impact and meaning.
-                </p>
-                <div class="text-gray-300 space-y-1">
-                    <p>📧 rodrigo@starsetmedia.ca</p>
-                    <p>📍 Lethbridge, Alberta</p>
-                </div>
-            </div>
-
-            <!-- Jared Middlebrook -->
-            <div class="bg-black/50 p-8 rounded-lg text-center">
-                <div class="w-32 h-32 bg-gradient-to-br from-amber-500 to-amber-700 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <span class="text-3xl font-bold text-white">JM</span>
-                </div>
-                <h3 class="text-2xl font-bold text-amber-500 mb-2">Jared Middlebrook</h3>
-                <p class="text-xl text-gray-300 mb-4">Technical Director</p>
-                <p class="text-gray-400 mb-4 leading-relaxed">
-                    Jared oversees the technical aspects of our productions, ensuring that every project meets the highest standards of quality. His expertise in post-production and technical workflows keeps our projects running smoothly.
-                </p>
-                <div class="text-gray-300 space-y-1">
-                    <p>📧 jared@starsetmedia.ca</p>
-                    <p>📍 Calgary, Alberta</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Extended Team -->
-<section class="py-20 bg-black">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Extended Team</h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                Talented professionals who contribute their expertise to our projects.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <!-- Team Member 1 -->
-            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
-                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span class="text-xl font-bold text-white">SJ</span>
-                </div>
-                <h3 class="text-lg font-bold text-amber-500 mb-1">Sarah Johnson</h3>
-                <p class="text-gray-300 mb-2">Lead Photographer</p>
-                <p class="text-gray-400 text-sm">Specializing in portrait and event photography with an eye for capturing authentic emotions.</p>
-            </div>
-
-            <!-- Team Member 2 -->
-            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
-                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span class="text-xl font-bold text-white">MT</span>
-                </div>
-                <h3 class="text-lg font-bold text-amber-500 mb-1">Mike Thompson</h3>
-                <p class="text-gray-300 mb-2">Video Editor</p>
-                <p class="text-gray-400 text-sm">Expert in post-production with a talent for creating compelling narratives through editing.</p>
-            </div>
-
-            <!-- Team Member 3 -->
-            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
-                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span class="text-xl font-bold text-white">AL</span>
-                </div>
-                <h3 class="text-lg font-bold text-amber-500 mb-1">Alex Liu</h3>
-                <p class="text-gray-300 mb-2">Graphic Designer</p>
-                <p class="text-gray-400 text-sm">Creative designer specializing in brand identity and visual communication.</p>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div class="bg-gray-900/50 p-6 rounded-lg text-center">
-                <div class="w-24 h-24 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <span class="text-xl font-bold text-white">EM</span>
-                </div>
-                <h3 class="text-lg font-bold text-amber-500 mb-1">Emma Martinez</h3>
-                <p class="text-gray-300 mb-2">Sound Engineer</p>
-                <p class="text-gray-400 text-sm">Audio specialist ensuring crystal clear sound quality in all our productions.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section class="py-20 bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                Hear from the people who have trusted us with their creative projects.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Testimonial 1 -->
-            <div class="bg-black/50 p-6 rounded-lg">
-                <div class="mb-4">
-                    <div class="flex text-amber-500 mb-2">
-                        <span>★★★★★</span>
+        <!-- Rodrigo Henriquez -->
+        <div class="mb-20" data-aos="fade-up" data-aos-duration="800">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="w-64 h-64 bg-gradient-to-br from-accent/20 to-accent/40 rounded-lg mx-auto lg:mx-0 mb-6 flex items-center justify-center relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop&crop=face&auto=format" 
+                             alt="Rodrigo Henriquez" 
+                             class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
                     </div>
-                    <p class="text-gray-300 mb-4">"Starset Media exceeded our expectations. Their creativity and professionalism made our corporate video stand out from the competition."</p>
                 </div>
-                <div class="border-t border-gray-700 pt-4">
-                    <p class="font-semibold text-amber-500">Jennifer Chen</p>
-                    <p class="text-gray-400 text-sm">Marketing Director, TechFlow Inc.</p>
-                </div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="bg-black/50 p-6 rounded-lg">
-                <div class="mb-4">
-                    <div class="flex text-amber-500 mb-2">
-                        <span>★★★★★</span>
-                    </div>
-                    <p class="text-gray-300 mb-4">"The team captured our wedding day perfectly. Every moment was beautifully documented, and we'll treasure these memories forever."</p>
-                </div>
-                <div class="border-t border-gray-700 pt-4">
-                    <p class="font-semibold text-amber-500">David & Rachel Miller</p>
-                    <p class="text-gray-400 text-sm">Wedding Clients</p>
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-2">Rodrigo</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Henriquez</h3>
+                    <h4 class="text-2xl font-semibold text-accent mb-4">Executive Producer/Director</h4>
+                    <p class="text-xl text-accent mb-6">Photography | Film | Graphic Design</p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Rodrigo has his BFA in New Media from the University of Lethbridge. His films have been in film festivals around the world. A director, cinematographer, writer, photographer, graphic designer, film editor, music engineer, musician, and producer, Rodrigo does it all. He loves anything creative, especially when it comes to filmmaking.
+                    </p>
+                    <a href="#" class="inline-block bg-white hover:bg-gray-200 text-black px-6 py-3 rounded-lg font-semibold transition-colors">
+                        Learn More
+                    </a>
                 </div>
             </div>
+        </div>
 
-            <!-- Testimonial 3 -->
-            <div class="bg-black/50 p-6 rounded-lg">
-                <div class="mb-4">
-                    <div class="flex text-amber-500 mb-2">
-                        <span>★★★★★</span>
-                    </div>
-                    <p class="text-gray-300 mb-4">"Working with Starset Media was a game-changer for our brand. Their graphic design work elevated our entire visual identity."</p>
+        <!-- Shannon Milligan -->
+        <div class="mb-20" data-aos="fade-up" data-aos-duration="800">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-2">Shannon</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Milligan</h3>
+                    <h4 class="text-2xl font-semibold text-accent mb-4">Executive Producer/Director/Artist</h4>
+                    <p class="text-xl text-accent mb-6">Illustration | Graphic Design | Photography | Motion Graphics</p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        Shannon is a New Media B.F.A graduate from the University of Lethbridge. She focuses on film and post-production. Her skill set includes graphic artist, set/prop designer, animator, editor, SFX artist, producer, and director. She is a Jack of all trades and loves a challenge. Building and creating unique worlds through every art form is what Shannon loves to do.
+                    </p>
+                    <blockquote class="text-accent text-xl italic mb-6 border-l-4 border-accent pl-4">
+                        "A new vision, is in the hands of its creator"
+                    </blockquote>
+                    <a href="#" class="inline-block bg-white hover:bg-gray-200 text-black px-6 py-3 rounded-lg font-semibold transition-colors">
+                        Learn More
+                    </a>
                 </div>
-                <div class="border-t border-gray-700 pt-4">
-                    <p class="font-semibold text-amber-500">Marcus Rodriguez</p>
-                    <p class="text-gray-400 text-sm">CEO, Urban Lifestyle Co.</p>
+                <div class="text-center lg:text-right order-1 lg:order-2">
+                    <div class="w-64 h-64 bg-gradient-to-br from-accent/20 to-accent/40 rounded-lg mx-auto lg:ml-auto lg:mr-0 mb-6 flex items-center justify-center relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b515?w=600&h=600&fit=crop&crop=face&auto=format" 
+                             alt="Shannon Milligan" 
+                             class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Brent Clark -->
+        <div class="mb-20" data-aos="fade-up" data-aos-duration="800">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="w-64 h-64 bg-gradient-to-br from-accent/20 to-accent/40 rounded-lg mx-auto lg:mx-0 mb-6 flex items-center justify-center relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop&crop=face&auto=format" 
+                             alt="Brent Clark" 
+                             class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-2">Brent</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Clark</h3>
+                    <h4 class="text-2xl font-semibold text-accent mb-4">Executive Assistant/Actor/Writer</h4>
+                    <p class="text-xl text-accent mb-6">Actor | Intimacy/Fight Choreographer</p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        A writer, actor, intimacy/fight choreographer, and impromptu performer. After graduating from the UofL with a BFA in Dramatic Arts in 2019, Brent has had his eyes set on the development within the Lethbridge film and live performance community. You can find Brent regularly performing Saturdays at DiDi's Playhaus, or working with the Lethbridge College as an Instructional Assistant.
+                    </p>
+                    <blockquote class="text-accent text-xl italic mb-6 border-l-4 border-accent pl-4">
+                        "A large part of who we are is what we surround ourselves with, and I find Lethbridge the surround sound version of a good time"
+                    </blockquote>
+                    <a href="#" class="inline-block bg-white hover:bg-gray-200 text-black px-6 py-3 rounded-lg font-semibold transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Jared Middlebrook -->
+        <div class="mb-20" data-aos="fade-up" data-aos-duration="800">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1">
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-2">Jared</h2>
+                    <h3 class="text-4xl md:text-5xl font-bold text-white mb-4">Middlebrook</h3>
+                    <h4 class="text-2xl font-semibold text-accent mb-4">Cinematographer</h4>
+                    <p class="text-xl text-accent mb-6">Photography | Cinematography | Video Editing</p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                        With a B.F.A. in New Media and B. Mgt in Marketing, Jared has a unique insight into both the artistic and management side of production. A cinematographer, colourist, film editor, and marketing specialist by trade. Jared has a keen eye for detail and subtext that he pours into every project.
+                    </p>
+                    <a href="#" class="inline-block bg-white hover:bg-gray-200 text-black px-6 py-3 rounded-lg font-semibold transition-colors">
+                        Learn More
+                    </a>
+                </div>
+                <div class="text-center lg:text-right order-1 lg:order-2">
+                    <div class="w-64 h-64 bg-gradient-to-br from-accent/20 to-accent/40 rounded-lg mx-auto lg:ml-auto lg:mr-0 mb-6 flex items-center justify-center relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=600&h=600&fit=crop&crop=face&auto=format" 
+                             alt="Jared Middlebrook" 
+                             class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,13 +130,13 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-[#111111]">
+<section class="py-20 bg-primary" data-aos="fade-up">
     <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Our Team?</h2>
         <p class="text-xl mb-8 text-gray-300">
             Let's collaborate and create something amazing together. Our team is ready to bring your vision to life.
         </p>
-        <a href="{{ route('contact') }}" class="inline-block bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors">
+        <a href="{{ route('contact') }}" class="inline-block bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 hover:scale-105 shadow-lg">
             Get In Touch
         </a>
     </div>

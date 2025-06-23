@@ -5,13 +5,13 @@
 @section('content')
 <div class="max-w-4xl mx-auto">
     <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold text-gray-900">{{ $project->title }}</h1>
+        <h1 class="text-2xl font-bold text-primary-admin">{{ $project->title }}</h1>
         <div class="flex space-x-3">
             <a href="{{ route('admin.projects.edit', $project) }}" 
-               class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                Edit Project
+               class="bg-blue-600 dark:bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+                <i class="fas fa-edit me-2"></i>Edit Project
             </a>
-            <a href="{{ route('admin.projects.index') }}" class="text-gray-600 hover:text-gray-900">
+            <a href="{{ route('admin.projects.index') }}" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200">
                 ← Back to Projects
             </a>
         </div>
@@ -19,22 +19,22 @@
 
     <div class="space-y-6">
         <!-- Project Status -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="admin-card bg-white dark:bg-gray-800 rounded-lg shadow p-6">
             <div class="flex items-center justify-between mb-4">
-                <h2 class="text-lg font-medium text-gray-900">Project Status</h2>
+                <h2 class="text-lg font-medium text-primary-admin">Project Status</h2>
                 <div class="flex space-x-2">
                     @if($project->published)
-                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                        <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-sm font-medium rounded-full">
                             ✅ Published
                         </span>
                     @else
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 text-sm font-medium rounded-full">
+                        <span class="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 text-sm font-medium rounded-full">
                             📝 Draft
                         </span>
                     @endif
                     
                     @if($project->featured)
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm font-medium rounded-full">
+                        <span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-sm font-medium rounded-full">
                             ⭐ Featured
                         </span>
                     @endif
@@ -43,16 +43,16 @@
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                 <div>
-                    <span class="text-gray-500">Type:</span>
-                    <span class="ml-2 font-medium capitalize">{{ str_replace('_', ' ', $project->type) }}</span>
+                    <span class="text-secondary-admin">Type:</span>
+                    <span class="ml-2 font-medium capitalize text-primary-admin">{{ str_replace('_', ' ', $project->type) }}</span>
                 </div>
                 <div>
-                    <span class="text-gray-500">Client:</span>
-                    <span class="ml-2 font-medium">{{ $project->client ?? 'N/A' }}</span>
+                    <span class="text-secondary-admin">Client:</span>
+                    <span class="ml-2 font-medium text-primary-admin">{{ $project->client ?? 'N/A' }}</span>
                 </div>
                 <div>
-                    <span class="text-gray-500">Completion:</span>
-                    <span class="ml-2 font-medium">
+                    <span class="text-secondary-admin">Completion:</span>
+                    <span class="ml-2 font-medium text-primary-admin">
                         @if($project->completion_date)
                             {{ $project->completion_date->format('M j, Y') }}
                         @else
@@ -61,16 +61,16 @@
                     </span>
                 </div>
                 <div>
-                    <span class="text-gray-500">Slug:</span>
-                    <span class="ml-2 font-medium font-mono text-xs">{{ $project->slug }}</span>
+                    <span class="text-secondary-admin">Slug:</span>
+                    <span class="ml-2 font-medium font-mono text-xs text-primary-admin">{{ $project->slug }}</span>
                 </div>
                 <div>
-                    <span class="text-gray-500">Sort Order:</span>
-                    <span class="ml-2 font-medium">{{ $project->sort_order }}</span>
+                    <span class="text-secondary-admin">Sort Order:</span>
+                    <span class="ml-2 font-medium text-primary-admin">{{ $project->sort_order }}</span>
                 </div>
                 <div>
-                    <span class="text-gray-500">Created:</span>
-                    <span class="ml-2 font-medium">{{ $project->created_at->format('M j, Y') }}</span>
+                    <span class="text-secondary-admin">Created:</span>
+                    <span class="ml-2 font-medium text-primary-admin">{{ $project->created_at->format('M j, Y') }}</span>
                 </div>
             </div>
         </div>
@@ -154,32 +154,55 @@
         <div class="flex justify-between items-center">
             <div class="flex space-x-3">
                 <a href="{{ route('admin.projects.edit', $project) }}" 
-                   class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                    Edit Project
+                   class="bg-blue-600 dark:bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">
+                    <i class="fas fa-edit me-2"></i>Edit Project
                 </a>
                 
                 @if($project->published)
                     <a href="{{ route('admin.projects.index') }}" 
-                       class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                       class="bg-green-600 dark:bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors">
                         ✅ Live on Website
                     </a>
                 @else
-                    <span class="bg-gray-400 text-white px-6 py-2 rounded-lg cursor-not-allowed">
+                    <span class="bg-gray-400 dark:bg-gray-600 text-white px-6 py-2 rounded-lg cursor-not-allowed">
                         📝 Draft Mode
                     </span>
                 @endif
             </div>
             
-            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" class="inline">
-                @csrf
-                @method('DELETE')
-                <button type="submit" 
-                        class="text-red-600 hover:text-red-800 text-sm font-medium"
-                        onclick="return confirm('Are you sure you want to delete this project? This action cannot be undone.')">
-                    🗑️ Delete Project
-                </button>
-            </form>
+            <button type="button" 
+                    class="btn btn-danger btn-sm"
+                    onclick="deleteProject({{ $project->id }}, '{{ $project->title }}')">
+                <i class="fas fa-trash me-2"></i>Delete Project
+            </button>
         </div>
     </div>
 </div>
+<script>
+function deleteProject(projectId, projectTitle) {
+    if (confirm(`Are you sure you want to delete "${projectTitle}"? This action cannot be undone.`)) {
+        // Create a form dynamically to submit the delete request
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/admin/projects/${projectId}`;
+        
+        // Add CSRF token
+        const csrfToken = document.createElement('input');
+        csrfToken.type = 'hidden';
+        csrfToken.name = '_token';
+        csrfToken.value = '{{ csrf_token() }}';
+        form.appendChild(csrfToken);
+        
+        // Add method spoofing for DELETE
+        const methodInput = document.createElement('input');
+        methodInput.type = 'hidden';
+        methodInput.name = '_method';
+        methodInput.value = 'DELETE';
+        form.appendChild(methodInput);
+        
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+</script>
 @endsection 

@@ -16,63 +16,55 @@
 <!-- Services Grid -->
 <section class="py-20 bg-gray-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Film & Video -->
-            <div class="bg-black/50 p-8 rounded-lg">
-                <h2 class="text-2xl font-bold text-accent mb-4">Film & Video Production</h2>
-                <p class="text-gray-300 mb-6">Professional video content that tells compelling stories and engages your audience.</p>
-                <ul class="space-y-2 text-muted">
-                    <li>• Corporate Videos</li>
-                    <li>• Commercial Production</li>
-                    <li>• Music Videos</li>
-                    <li>• Documentary Films</li>
-                    <li>• Event Coverage</li>
-                    <li>• Post-Production & Editing</li>
-                </ul>
-            </div>
+        @if($services->count() > 0)
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                @foreach($services as $service)
+                    <div class="bg-black/50 p-8 rounded-lg hover:bg-black/70 transition-all duration-300 hover:scale-105">
+                        @if($service->icon)
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-accent/20 rounded-lg flex items-center justify-center mr-4">
+                                    <i class="{{ $service->icon }} text-accent text-xl"></i>
+                                </div>
+                                <h2 class="text-2xl font-bold text-accent">{{ $service->title }}</h2>
+                            </div>
+                        @else
+                            <h2 class="text-2xl font-bold text-accent mb-4">{{ $service->title }}</h2>
+                        @endif
+                        
+                        <p class="text-gray-300 mb-6">{{ $service->description }}</p>
+                        
+                        @if($service->features_list && count($service->features_list) > 0)
+                            <ul class="space-y-2 text-muted mb-6">
+                                @foreach($service->features_list as $feature)
+                                    <li>• {{ $feature }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
 
-            <!-- Photography -->
-            <div class="bg-black/50 p-8 rounded-lg">
-                <h2 class="text-2xl font-bold text-accent mb-4">Photography</h2>
-                <p class="text-gray-300 mb-6">Stunning photography that captures moments and creates lasting impressions.</p>
-                <ul class="space-y-2 text-muted">
-                    <li>• Portrait Photography</li>
-                    <li>• Event Photography</li>
-                    <li>• Product Photography</li>
-                    <li>• Corporate Headshots</li>
-                    <li>• Artistic Photography</li>
-                    <li>• Photo Editing & Retouching</li>
-                </ul>
+                        @if($service->price_from)
+                            <div class="mb-4">
+                                <span class="text-accent font-semibold">Starting from ${{ number_format($service->price_from, 2) }}</span>
+                            </div>
+                        @endif
+                        
+                        <div class="mt-6">
+                            <img src="{{ $service->image }}" alt="{{ $service->title }}" 
+                                 class="w-full h-48 object-cover rounded-lg hover:scale-105 transition-transform duration-300">
+                        </div>
+                    </div>
+                @endforeach
             </div>
-
-            <!-- Graphic Design -->
-            <div class="bg-black/50 p-8 rounded-lg">
-                <h2 class="text-2xl font-bold text-accent mb-4">Graphic Design</h2>
-                <p class="text-gray-300 mb-6">Creative design solutions that strengthen your brand and communicate your message.</p>
-                <ul class="space-y-2 text-muted">
-                    <li>• Brand Identity Design</li>
-                    <li>• Logo Creation</li>
-                    <li>• Marketing Materials</li>
-                    <li>• Digital Graphics</li>
-                    <li>• Print Design</li>
-                    <li>• Web Graphics</li>
-                </ul>
+        @else
+            <div class="text-center py-20">
+                <div class="w-24 h-24 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <i class="fas fa-concierge-bell text-accent text-3xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Services Coming Soon</h3>
+                <p class="text-gray-300 max-w-md mx-auto">
+                    We're working hard to bring you amazing services. Check back soon to see what we have to offer!
+                </p>
             </div>
-
-            <!-- Something Else -->
-            <div class="bg-black/50 p-8 rounded-lg">
-                <h2 class="text-2xl font-bold text-accent mb-4">Something Else</h2>
-                <p class="text-gray-300 mb-6">Custom creative solutions tailored to your unique needs and vision.</p>
-                <ul class="space-y-2 text-muted">
-                    <li>• Creative Consulting</li>
-                    <li>• Concept Development</li>
-                    <li>• Multi-Media Projects</li>
-                    <li>• Brand Strategy</li>
-                    <li>• Digital Experiences</li>
-                    <li>• Custom Solutions</li>
-                </ul>
-            </div>
-        </div>
+        @endif
     </div>
 </section>
 

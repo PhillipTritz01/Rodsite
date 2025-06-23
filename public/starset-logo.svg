@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <!-- Star burst design -->
+  <g transform="translate(400,160)">
+    <!-- Central circle -->
+    <circle cx="0" cy="0" r="20" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+    
+    <!-- Star rays -->
+    <g stroke="#FFD700" stroke-width="3" fill="none">
+      <!-- Main 8 rays -->
+      <line x1="0" y1="-80" x2="0" y2="-25" />
+      <line x1="57" y1="-57" x2="18" y2="-18" />
+      <line x1="80" y1="0" x2="25" y2="0" />
+      <line x1="57" y1="57" x2="18" y2="18" />
+      <line x1="0" y1="80" x2="0" y2="25" />
+      <line x1="-57" y1="57" x2="-18" y2="18" />
+      <line x1="-80" y1="0" x2="-25" y2="0" />
+      <line x1="-57" y1="-57" x2="-18" y2="-18" />
+      
+      <!-- Secondary rays -->
+      <line x1="40" y1="-69" x2="14" y2="-24" />
+      <line x1="69" y1="-40" x2="24" y2="-14" />
+      <line x1="69" y1="40" x2="24" y2="14" />
+      <line x1="40" y1="69" x2="14" y2="24" />
+      <line x1="-40" y1="69" x2="-14" y2="24" />
+      <line x1="-69" y1="40" x2="-24" y2="14" />
+      <line x1="-69" y1="-40" x2="-24" y2="-14" />
+      <line x1="-40" y1="-69" x2="-14" y2="-24" />
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="400" y="280" text-anchor="middle" fill="#FFD700" font-family="Arial, sans-serif" font-size="36" font-weight="bold" letter-spacing="4px">
+    STARSET MEDIA
+  </text>
+</svg> 

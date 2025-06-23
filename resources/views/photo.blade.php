@@ -25,67 +25,57 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Photo 1 -->
-            <div class="bg-gradient-to-br from-amber-900/20 to-black rounded-lg overflow-hidden aspect-square">
-                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div class="text-center">
-                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <p class="text-gray-400 text-sm">Portrait Session</p>
-                    </div>
+            <div class="bg-gradient-to-br from-amber-900/20 to-black rounded-lg overflow-hidden aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1554048612-b6a482b224dd?w=600&h=600&fit=crop&auto=format" 
+                     alt="Portrait Session" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <p class="text-white font-medium">Portrait Session</p>
                 </div>
             </div>
 
             <!-- Photo 2 -->
-            <div class="bg-gradient-to-br from-blue-900/20 to-black rounded-lg overflow-hidden aspect-[4/5]">
-                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div class="text-center">
-                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <p class="text-gray-400 text-sm">Event Photography</p>
-                    </div>
+            <div class="bg-gradient-to-br from-blue-900/20 to-black rounded-lg overflow-hidden aspect-[4/5] relative">
+                <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&h=750&fit=crop&auto=format" 
+                     alt="Event Photography" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <p class="text-white font-medium">Event Photography</p>
                 </div>
             </div>
 
             <!-- Photo 3 -->
-            <div class="bg-gradient-to-br from-purple-900/20 to-black rounded-lg overflow-hidden aspect-[3/4]">
-                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div class="text-center">
-                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <p class="text-gray-400 text-sm">Product Photography</p>
-                    </div>
+            <div class="bg-gradient-to-br from-purple-900/20 to-black rounded-lg overflow-hidden aspect-[3/4] relative">
+                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=800&fit=crop&auto=format" 
+                     alt="Product Photography" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <p class="text-white font-medium">Product Photography</p>
                 </div>
             </div>
 
             <!-- Photo 4 -->
-            <div class="bg-gradient-to-br from-green-900/20 to-black rounded-lg overflow-hidden aspect-video lg:col-span-2">
-                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div class="text-center">
-                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <p class="text-gray-400 text-sm">Landscape Photography</p>
-                    </div>
+            <div class="bg-gradient-to-br from-green-900/20 to-black rounded-lg overflow-hidden aspect-video lg:col-span-2 relative">
+                <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=675&fit=crop&auto=format" 
+                     alt="Landscape Photography" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <p class="text-white font-medium">Landscape Photography</p>
                 </div>
             </div>
 
             <!-- Photo 5 -->
-            <div class="bg-gradient-to-br from-yellow-900/20 to-black rounded-lg overflow-hidden aspect-square">
-                <div class="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div class="text-center">
-                        <svg class="w-12 h-12 text-amber-500 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                        <p class="text-gray-400 text-sm">Corporate Headshots</p>
-                    </div>
+            <div class="bg-gradient-to-br from-yellow-900/20 to-black rounded-lg overflow-hidden aspect-square relative">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=600&fit=crop&crop=face&auto=format" 
+                     alt="Corporate Headshots" 
+                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4">
+                    <p class="text-white font-medium">Corporate Headshots</p>
                 </div>
             </div>
         </div>

@@ -56,4 +56,23 @@ class Project extends Model
     {
         return $query->where('type', $type);
     }
+
+    // Get placeholder image URL based on project type
+    public function getPlaceholderImageAttribute()
+    {
+        $placeholders = [
+            'film' => 'https://images.unsplash.com/photo-1489599328050-8d548c4c9d4c?w=600&h=400&fit=crop&auto=format',
+            'photography' => 'https://images.unsplash.com/photo-1554048612-b6a482b224dd?w=600&h=400&fit=crop&auto=format',
+            'graphic_design' => 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop&auto=format',
+            'other' => 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&auto=format'
+        ];
+
+        return $placeholders[$this->type] ?? $placeholders['other'];
+    }
+
+    // Get the image URL with fallback to placeholder
+    public function getImageAttribute()
+    {
+        return $this->image_url ?: $this->placeholder_image;
+    }
 }

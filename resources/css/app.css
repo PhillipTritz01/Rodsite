@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  /* Right-side reveal (default) - circle starts from right */
+  .clip-start { clip-path: circle(0% at 100% 50%); }
+  .clip-reveal { clip-path: circle(120% at 100% 50%); }
+  
+  /* Left-side reveal - circle starts from left */
+  .clip-start-left { clip-path: circle(0% at 0% 50%); }
+  .clip-reveal-left { clip-path: circle(120% at 0% 50%); }
+}
