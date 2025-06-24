@@ -14,6 +14,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                display: ['Orbitron', 'sans-serif'],
             },
             colors: {
                 'primary': '#111111',

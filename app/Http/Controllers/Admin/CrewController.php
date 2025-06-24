@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CrewMember;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CrewController extends Controller
 {
@@ -38,10 +39,17 @@ class CrewController extends Controller
             'phone' => 'nullable|string|max:255',
             'location' => 'nullable|string|max:255',
             'image_url' => 'nullable|url',
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:25600',
             'core_team' => 'boolean',
             'published' => 'boolean',
             'sort_order' => 'nullable|integer|min:0',
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image_file')) {
+            $imagePath = $request->file('image_file')->store('crew-images', 'public');
+            $validated['image_path'] = $imagePath;
+        }
 
         // Handle social links
         $socialLinks = [];
@@ -97,10 +105,25 @@ class CrewController extends Controller
             'phone' => 'nullable|string|max:255',
             'location' => 'nullable|string|max:255',
             'image_url' => 'nullable|url',
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:25600',
             'core_team' => 'boolean',
             'published' => 'boolean',
             'sort_order' => 'nullable|integer|min:0',
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image_file')) {
+            // Delete old image if it exists
+            if ($crew->image_path && Storage::disk('public')->exists($crew->image_path)) {
+                Storage::disk('public')->delete($crew->image_path);
+            }
+            
+            $imagePath = $request->file('image_file')->store('crew-images', 'public');
+            $validated['image_path'] = $imagePath;
+            
+            // Clear image_url if uploading a new file
+            $validated['image_url'] = null;
+        }
 
         // Handle social links
         $socialLinks = [];
@@ -132,6 +155,11 @@ class CrewController extends Controller
      */
     public function destroy(CrewMember $crew)
     {
+        // Delete associated image file if it exists
+        if ($crew->image_path && Storage::disk('public')->exists($crew->image_path)) {
+            Storage::disk('public')->delete($crew->image_path);
+        }
+        
         $crew->delete();
 
         return redirect()->route('admin.crew.index')

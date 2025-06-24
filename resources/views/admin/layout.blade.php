@@ -113,14 +113,15 @@
         .admin-nav-link {
             display: flex;
             align-items: center;
-            padding: 12px 16px;
+            padding: 10px 12px;
             color: #e2e8f0;
             text-decoration: none;
-            border-radius: 8px;
-            margin-bottom: 4px;
+            border-radius: 6px;
+            margin-bottom: 3px;
             transition: all 0.2s ease;
             font-weight: 500;
             border: 1px solid transparent;
+            font-size: 14px;
         }
         .admin-nav-link:hover {
             color: #ffffff;
@@ -135,20 +136,20 @@
             box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
         }
         .admin-nav-link i {
-            width: 20px;
-            font-size: 16px;
-            margin-right: 12px;
+            width: 18px;
+            font-size: 14px;
+            margin-right: 10px;
         }
 
         /* Section Titles with Better Contrast */
         .nav-section-title {
             color: #cbd5e1;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 8px;
-            padding-left: 16px;
+            margin-bottom: 6px;
+            padding-left: 12px;
         }
 
         /* Brand */
@@ -160,7 +161,7 @@
         }
 
         .nav-section {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         /* Enhanced Dark Mode for Content Area */
@@ -412,6 +413,21 @@
             background: #64748b;
         }
 
+        /* Prevent horizontal overflow */
+        body {
+            overflow-x: hidden;
+        }
+
+        /* Ensure proper flexbox behavior */
+        .admin-sidebar {
+            min-height: 0;
+        }
+
+        /* Fix content area scrolling */
+        .admin-content {
+            overflow-x: hidden;
+        }
+
         /* Theme Toggle Button */
         #theme-toggle {
             transition: all 0.3s ease;
@@ -421,18 +437,59 @@
             transform: scale(1.05);
         }
 
-        /* Dropdown Menus - Dark in dark mode */
-        .dark .dropdown-menu {
-            background-color: var(--admin-card-dark) !important;
-            border-color: var(--admin-border-dark) !important;
+                /* User Menu Dropdown Styling */
+        #userMenuToggle {
+            transition: all 0.2s ease;
         }
-
-        .dark .dropdown-item {
-            color: var(--admin-text-primary-dark) !important;
+        
+        #userMenuToggle:hover {
+            background-color: rgba(0, 0, 0, 0.05) !important;
         }
-
-        .dark .dropdown-item:hover {
-            background-color: rgba(248, 250, 252, 0.1) !important;
+        
+        .dark #userMenuToggle:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        #userMenuChevron {
+            transition: transform 0.2s ease;
+        }
+        
+        #userDropdownMenu {
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+        
+        .dark #userDropdownMenu {
+            background-color: #1e293b !important;
+            border-color: #475569 !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2) !important;
+        }
+        
+        .hover-bg-light:hover {
+            background-color: #f8fafc !important;
+        }
+        
+        .dark .hover-bg-light:hover {
+            background-color: #334155 !important;
+        }
+        
+        .dark #userDropdownMenu .text-dark {
+            color: #f8fafc !important;
+        }
+        
+        .dark #userDropdownMenu .text-muted {
+            color: #cbd5e1 !important;
+        }
+        
+        /* Logout button hover effect */
+        .text-danger.hover-bg-light:hover {
+            background-color: #fef2f2 !important;
+        }
+        
+        .dark .text-danger.hover-bg-light:hover {
+            background-color: #450a0a !important;
+            color: #fca5a5 !important;
         }
 
         /* Modal Support - Completely dark */
@@ -511,20 +568,20 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 font-sans antialiased h-full">
-    <div class="flex h-screen">
+<body class="bg-gray-100 dark:bg-gray-900 font-sans antialiased h-full overflow-hidden">
+    <div class="flex h-screen w-full">
         <!-- Enhanced Sidebar -->
-        <div class="admin-sidebar w-64 text-white flex-shrink-0">
+        <div class="admin-sidebar w-56 text-white flex-shrink-0 overflow-hidden">
             <!-- Brand Section -->
-            <div class="p-6 border-b border-gray-700 dark:border-gray-600">
-                <h1 class="sidebar-brand text-2xl font-bold">
+            <div class="p-4 border-b border-gray-700 dark:border-gray-600">
+                <h1 class="sidebar-brand text-xl font-bold">
                     <i class="fas fa-star me-2"></i>Starset CMS
                 </h1>
-                <p class="text-gray-400 dark:text-gray-300 text-sm mt-1">Content Management System</p>
+                <p class="text-gray-400 dark:text-gray-300 text-xs mt-1">Content Management System</p>
             </div>
             
             <!-- Navigation -->
-            <nav class="flex-1 px-4 py-6 overflow-y-auto">
+            <nav class="flex-1 px-3 py-4 overflow-y-auto min-h-0">
                 <!-- Overview Section -->
                 <div class="nav-section">
                     <div class="nav-section-title">
@@ -579,6 +636,17 @@
                             </span>
                         @endif
                     </a>
+                    
+                    <!-- Home Page -->
+                    <a href="{{ route('admin.homepage.index') }}" class="admin-nav-link {{ request()->routeIs('admin.homepage.*') ? 'active' : '' }}">
+                        <i class="fas fa-home"></i>
+                        Home Page
+                        @if(request()->routeIs('admin.homepage.*'))
+                            <span class="ms-auto">
+                                <i class="fas fa-circle" style="font-size: 6px;"></i>
+                            </span>
+                        @endif
+                    </a>
                 </div>
                 
                 <!-- Website & Tools Section -->
@@ -609,20 +677,20 @@
                 </div>
                 
                 <!-- Quick Stats Section -->
-                <div class="nav-section mt-auto pt-4 border-t border-gray-700 dark:border-gray-600">
+                <div class="nav-section mt-auto pt-3 border-t border-gray-700 dark:border-gray-600">
                     <div class="nav-section-title">
                         <i class="fas fa-chart-bar me-1"></i> Quick Stats
                     </div>
-                    <div class="px-4 space-y-2">
-                        <div class="flex justify-between text-sm">
+                    <div class="px-3 space-y-1.5">
+                        <div class="flex justify-between text-xs">
                             <span class="text-gray-400 dark:text-gray-300">Projects</span>
                             <span class="text-white font-medium">{{ \App\Models\Project::count() }}</span>
                         </div>
-                        <div class="flex justify-between text-sm">
+                        <div class="flex justify-between text-xs">
                             <span class="text-gray-400 dark:text-gray-300">Services</span>
                             <span class="text-white font-medium">{{ \App\Models\Service::count() }}</span>
                         </div>
-                        <div class="flex justify-between text-sm">
+                        <div class="flex justify-between text-xs">
                             <span class="text-gray-400 dark:text-gray-300">Team</span>
                             <span class="text-white font-medium">{{ \App\Models\CrewMember::count() }}</span>
                         </div>
@@ -632,9 +700,9 @@
         </div>
         
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden">
+        <div class="flex-1 flex flex-col overflow-hidden min-w-0">
             <!-- Header -->
-            <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-all duration-300">
+            <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-all duration-300 flex-shrink-0">
                 <div class="flex items-center justify-between px-6 py-4">
                     <div>
                         <h2 class="text-xl font-semibold text-gray-800 dark:text-white">
@@ -656,16 +724,77 @@
                             </svg>
                         </button>
                         
-                        <span class="text-sm text-gray-600 dark:text-gray-300">Starset Media Admin</span>
-                        <div class="w-8 h-8 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm font-bold">SM</span>
+                        <!-- User Menu Dropdown -->
+                        <div class="position-relative" id="userMenuContainer">
+                            <button class="btn btn-link d-flex align-items-center text-decoration-none border-0 bg-transparent p-2" 
+                                    type="button" 
+                                    id="userMenuToggle" 
+                                    onclick="toggleUserMenu()"
+                                    style="color: inherit;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center me-2" 
+                                     style="width: 32px; height: 32px; background: linear-gradient(135deg, #f59e0b, #d97706);">
+                                    <span class="text-white fw-bold" style="font-size: 14px;">
+                                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                    </span>
+                                </div>
+                                <div class="text-start">
+                                    <div style="font-size: 14px; font-weight: 500; line-height: 1.2;">{{ auth()->user()->name }}</div>
+                                    <div style="font-size: 11px; opacity: 0.7; line-height: 1;">Administrator</div>
+                                </div>
+                                <i class="fas fa-chevron-down ms-2" style="font-size: 10px;" id="userMenuChevron"></i>
+                            </button>
+                            
+                            <div class="position-absolute end-0 mt-1 bg-white shadow-lg border rounded" 
+                                 id="userDropdownMenu" 
+                                 style="min-width: 220px; z-index: 1050; display: none; top: 100%;">
+                                <!-- User Profile Header -->
+                                <div class="p-3 border-bottom">
+                                    <div class="d-flex align-items-center">
+                                        <div class="rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 40px; height: 40px; background: linear-gradient(135deg, #f59e0b, #d97706);">
+                                            <span class="text-white fw-bold">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                        </div>
+                                        <div>
+                                            <div class="fw-semibold" style="font-size: 14px;">{{ auth()->user()->name }}</div>
+                                            <div class="text-muted" style="font-size: 12px;">{{ auth()->user()->email }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Navigation Items -->
+                                <div class="py-1">
+                                    <a class="d-flex align-items-center px-3 py-2 text-decoration-none text-dark hover-bg-light" 
+                                       href="{{ route('admin.dashboard') }}">
+                                        <i class="fas fa-tachometer-alt me-3 text-muted" style="width: 16px;"></i>
+                                        Dashboard
+                                    </a>
+                                    <a class="d-flex align-items-center px-3 py-2 text-decoration-none text-dark hover-bg-light" 
+                                       href="{{ route('home') }}" target="_blank">
+                                        <i class="fas fa-external-link-alt me-3 text-muted" style="width: 16px;"></i>
+                                        View Website
+                                    </a>
+                                </div>
+                                
+                                <hr class="my-1">
+                                
+                                <!-- Logout -->
+                                <div class="py-1">
+                                    <form action="{{ route('admin.logout') }}" method="POST" class="m-0">
+                                        @csrf
+                                        <button type="submit" class="d-flex align-items-center px-3 py-2 text-danger w-100 border-0 bg-transparent text-start hover-bg-light">
+                                            <i class="fas fa-sign-out-alt me-3" style="width: 16px;"></i>
+                                            Logout
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </header>
             
             <!-- Main Content Area -->
-            <main class="flex-1 overflow-y-auto admin-content p-6">
+            <main class="flex-1 overflow-y-auto admin-content p-6 min-h-0">
                 @if(session('success'))
                     <div class="alert alert-success-admin alert-dismissible fade show mb-6" role="alert">
                         <i class="fas fa-check-circle me-2"></i>
@@ -722,7 +851,43 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateThemeIcons();
             applyDarkModeToBootstrap();
+            initializeDropdowns();
         });
+        
+        // User Menu Dropdown Functionality
+        function toggleUserMenu() {
+            const menu = document.getElementById('userDropdownMenu');
+            const chevron = document.getElementById('userMenuChevron');
+            
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'block';
+                chevron.style.transform = 'rotate(180deg)';
+            } else {
+                menu.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const container = document.getElementById('userMenuContainer');
+            const menu = document.getElementById('userDropdownMenu');
+            const chevron = document.getElementById('userMenuChevron');
+            
+            if (container && !container.contains(event.target)) {
+                menu.style.display = 'none';
+                chevron.style.transform = 'rotate(0deg)';
+            }
+        });
+        
+        // Initialize Bootstrap dropdowns (for other components)
+        function initializeDropdowns() {
+            // This is for other Bootstrap dropdowns, not our custom user menu
+            var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle:not(#userMenuToggle)'));
+            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+                return new bootstrap.Dropdown(dropdownToggleEl);
+            });
+        }
         
         // Theme toggle button click handler
         themeToggleBtn.addEventListener('click', function() {

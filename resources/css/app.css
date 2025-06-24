@@ -11,3 +11,7 @@
   .clip-start-left { clip-path: circle(0% at 0% 50%); }
   .clip-reveal-left { clip-path: circle(120% at 0% 50%); }
 }
+
+.film-carousel .swiper-slide {
+    height: 70vh;
+}

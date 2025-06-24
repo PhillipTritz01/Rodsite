@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    <form action="{{ route('admin.projects.store') }}" method="POST" class="space-y-6">
+    <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
         
         <div class="bg-white rounded-lg shadow p-6">
@@ -106,34 +106,68 @@
         <div class="bg-white rounded-lg shadow p-6">
             <h2 class="text-lg font-medium text-gray-900 mb-4">Media</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Image URL -->
-                <div>
-                    <label for="image_url" class="block text-sm font-medium text-gray-700 mb-2">
-                        Featured Image URL
-                    </label>
-                    <input type="url" name="image_url" id="image_url" value="{{ old('image_url') }}"
-                           class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                           placeholder="https://example.com/image.jpg">
-                    <p class="text-sm text-gray-500 mt-1">URL to the main project image</p>
-                    @error('image_url')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
+            <!-- Featured Image Section -->
+            <div class="mb-6">
+                <h3 class="text-base font-medium text-gray-900 mb-4">Featured Image</h3>
+                
+                <!-- Image Option Toggle -->
+                <div class="mb-4">
+                    <div class="flex space-x-4">
+                        <label class="flex items-center">
+                            <input type="radio" name="image_option" value="upload" id="upload_option" class="mr-2" checked>
+                            <span class="text-sm font-medium text-gray-700">Upload Image File</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="radio" name="image_option" value="url" id="url_option" class="mr-2">
+                            <span class="text-sm font-medium text-gray-700">Use Image URL</span>
+                        </label>
+                    </div>
                 </div>
 
-                <!-- Video URL -->
-                <div>
-                    <label for="video_url" class="block text-sm font-medium text-gray-700 mb-2">
-                        Video URL
-                    </label>
-                    <input type="url" name="video_url" id="video_url" value="{{ old('video_url') }}"
-                           class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                           placeholder="https://youtube.com/watch?v=...">
-                    <p class="text-sm text-gray-500 mt-1">YouTube, Vimeo, or direct video URL</p>
-                    @error('video_url')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
+                <!-- File Upload Option -->
+                <div id="upload_section" class="space-y-4">
+                    <div>
+                        <label for="image_file" class="block text-sm font-medium text-gray-700 mb-2">
+                            Choose Image File
+                        </label>
+                        <input type="file" name="image_file" id="image_file" accept="image/*"
+                               class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <p class="text-sm text-gray-500 mt-1">Supported formats: JPEG, PNG, JPG, GIF, WebP. Max size: 25MB</p>
+                        @error('image_file')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
+
+                <!-- URL Option -->
+                <div id="url_section" class="space-y-4" style="display: none;">
+                    <div>
+                        <label for="image_url" class="block text-sm font-medium text-gray-700 mb-2">
+                            Featured Image URL
+                        </label>
+                        <input type="url" name="image_url" id="image_url" value="{{ old('image_url') }}"
+                               class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                               placeholder="https://example.com/image.jpg">
+                        <p class="text-sm text-gray-500 mt-1">URL to the main project image</p>
+                        @error('image_url')
+                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video URL -->
+            <div>
+                <label for="video_url" class="block text-sm font-medium text-gray-700 mb-2">
+                    Video URL
+                </label>
+                <input type="url" name="video_url" id="video_url" value="{{ old('video_url') }}"
+                       class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       placeholder="https://youtube.com/watch?v=...">
+                <p class="text-sm text-gray-500 mt-1">YouTube, Vimeo, or direct video URL</p>
+                @error('video_url')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
         </div>
 
@@ -178,4 +212,28 @@
         </div>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const uploadOption = document.getElementById('upload_option');
+    const urlOption = document.getElementById('url_option');
+    const uploadSection = document.getElementById('upload_section');
+    const urlSection = document.getElementById('url_section');
+    
+    function toggleImageOptions() {
+        if (uploadOption.checked) {
+            uploadSection.style.display = 'block';
+            urlSection.style.display = 'none';
+            document.getElementById('image_url').value = '';
+        } else {
+            uploadSection.style.display = 'none';
+            urlSection.style.display = 'block';
+            document.getElementById('image_file').value = '';
+        }
+    }
+    
+    uploadOption.addEventListener('change', toggleImageOptions);
+    urlOption.addEventListener('change', toggleImageOptions);
+});
+</script>
 @endsection 

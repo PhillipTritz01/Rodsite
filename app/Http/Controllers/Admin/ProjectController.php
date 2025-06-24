@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -36,6 +37,7 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'type' => 'required|in:film,photography,graphic_design,other',
             'image_url' => 'nullable|url',
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:25600',
             'video_url' => 'nullable|url',
             'client' => 'nullable|string|max:255',
             'completion_date' => 'nullable|date',
@@ -43,6 +45,12 @@ class ProjectController extends Controller
             'published' => 'boolean',
             'sort_order' => 'nullable|integer|min:0',
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image_file')) {
+            $imagePath = $request->file('image_file')->store('project-images', 'public');
+            $validated['image_path'] = $imagePath;
+        }
 
         // Auto-generate slug if not provided
         if (empty($validated['slug'])) {
@@ -85,6 +93,7 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'type' => 'required|in:film,photography,graphic_design,other',
             'image_url' => 'nullable|url',
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:25600',
             'video_url' => 'nullable|url',
             'client' => 'nullable|string|max:255',
             'completion_date' => 'nullable|date',
@@ -92,6 +101,20 @@ class ProjectController extends Controller
             'published' => 'boolean',
             'sort_order' => 'nullable|integer|min:0',
         ]);
+
+        // Handle image upload
+        if ($request->hasFile('image_file')) {
+            // Delete old image if it exists
+            if ($project->image_path && Storage::disk('public')->exists($project->image_path)) {
+                Storage::disk('public')->delete($project->image_path);
+            }
+            
+            $imagePath = $request->file('image_file')->store('project-images', 'public');
+            $validated['image_path'] = $imagePath;
+            
+            // Clear image_url if uploading a new file
+            $validated['image_url'] = null;
+        }
 
         // Update slug if title changed
         if ($project->title !== $validated['title']) {
@@ -113,6 +136,11 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        // Delete associated image file if it exists
+        if ($project->image_path && Storage::disk('public')->exists($project->image_path)) {
+            Storage::disk('public')->delete($project->image_path);
+        }
+        
         $project->delete();
 
         return redirect()->route('admin.projects.index')

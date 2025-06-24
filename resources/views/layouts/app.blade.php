@@ -3,19 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ isset($title) ? $title . ' - ' : '' }}Starset Media</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
     
     <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <!-- Swiper.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-primary text-white">
+<body class="font-sans antialiased bg-gray-900 text-white">
     <!-- Navigation -->
     <nav class="bg-primary/90 backdrop-blur-sm fixed w-full z-50 border-b border-accent/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,8 +38,9 @@
                     <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">HOME</a>
                     <a href="{{ route('services') }}" class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}">SERVICES</a>
                     <a href="{{ route('film') }}" class="nav-link {{ request()->routeIs('film') ? 'active' : '' }}">FILMOGRAPHY</a>
-                    <a href="{{ route('photo') }}" class="nav-link {{ request()->routeIs('photo') ? 'active' : '' }}">PHOTOGRAPHY</a>
+                    <a href="{{ route('services.photography') }}" class="nav-link {{ request()->routeIs('services.photography') ? 'active' : '' }}">PHOTOGRAPHY</a>
                     <a href="{{ route('crew') }}" class="nav-link {{ request()->routeIs('crew') ? 'active' : '' }}">CREW</a>
+                    <a href="{{ route('portfolio') }}" class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">PORTFOLIO</a>
                     <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">CONTACT</a>
                 </div>
 
@@ -53,8 +61,9 @@
                 <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'active' : '' }}">HOME</a>
                 <a href="{{ route('services') }}" class="mobile-nav-link {{ request()->routeIs('services') ? 'active' : '' }}">SERVICES</a>
                 <a href="{{ route('film') }}" class="mobile-nav-link {{ request()->routeIs('film') ? 'active' : '' }}">FILMOGRAPHY</a>
-                <a href="{{ route('photo') }}" class="mobile-nav-link {{ request()->routeIs('photo') ? 'active' : '' }}">PHOTOGRAPHY</a>
+                                    <a href="{{ route('services.photography') }}" class="mobile-nav-link {{ request()->routeIs('services.photography') ? 'active' : '' }}">PHOTOGRAPHY</a>
                 <a href="{{ route('crew') }}" class="mobile-nav-link {{ request()->routeIs('crew') ? 'active' : '' }}">CREW</a>
+                <a href="{{ route('portfolio') }}" class="mobile-nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">PORTFOLIO</a>
                 <a href="{{ route('contact') }}" class="mobile-nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">CONTACT</a>
             </div>
         </div>
@@ -121,6 +130,11 @@
     <!-- AOS JavaScript -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <!-- Initialize other scripts -->
+    <script src="{{ asset('js/serviceReveal.js') }}"></script>
     <script>
         // Initialize AOS with enhanced settings
         AOS.init({

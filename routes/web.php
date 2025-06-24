@@ -3,20 +3,47 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\InquiryController;
+use App\Http\Controllers\Admin\AuthController;
 
 // Main website routes
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/services/film-and-video-production', [PageController::class, 'filmAndVideoProduction'])->name('services.film-video');
+Route::get('/services/photography', [PageController::class, 'photography'])->name('services.photography');
+Route::get('/services/graphic-design', [PageController::class, 'graphicDesign'])->name('services.graphic-design');
+Route::get('/services/web-development', [PageController::class, 'webDevelopment'])->name('services.web-development');
+Route::get('/services/podcast-production', [PageController::class, 'podcastProduction'])->name('services.podcast');
+Route::get('/services/something-else', [PageController::class, 'somethingElse'])->name('services.something-else');
 Route::get('/film', [PageController::class, 'film'])->name('film');
-Route::get('/photo', [PageController::class, 'photo'])->name('photo');
+
 Route::get('/crew', [PageController::class, 'crew'])->name('crew');
+Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // Contact form handling
 Route::post('/inquiry', [InquiryController::class, 'store'])->name('inquiry.store');
 
-// Admin CMS Routes
+// Fallback login route (redirects to admin login)
+Route::get('/login', function () {
+    return redirect()->route('admin.login');
+})->name('login');
+
+// Admin Authentication Routes
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'forgotPassword'])->name('password.email');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+// Password reset routes (without admin prefix for Laravel's system)
+Route::get('/admin/reset-password/{token}', [AuthController::class, 'showResetPasswordForm'])->name('password.reset');
+Route::post('/admin/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
+
+// Protected Admin CMS Routes
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/api-docs', function () {
         return view('admin.api-docs');
@@ -24,6 +51,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('projects', App\Http\Controllers\Admin\ProjectController::class);
     Route::resource('crew', App\Http\Controllers\Admin\CrewController::class);
     Route::resource('services', App\Http\Controllers\Admin\ServiceController::class);
+    
+    // Home Page Management
+    Route::get('homepage', [App\Http\Controllers\Admin\HomePageController::class, 'index'])->name('homepage.index');
+    Route::get('homepage/edit', [App\Http\Controllers\Admin\HomePageController::class, 'edit'])->name('homepage.edit');
+    Route::put('homepage', [App\Http\Controllers\Admin\HomePageController::class, 'update'])->name('homepage.update');
+    Route::delete('homepage/file', [App\Http\Controllers\Admin\HomePageController::class, 'deleteFile'])->name('homepage.deleteFile');
 });
 
 // API Routes for Headless CMS

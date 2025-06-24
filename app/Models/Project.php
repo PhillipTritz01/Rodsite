@@ -13,6 +13,7 @@ class Project extends Model
         'description',
         'type',
         'image_url',
+        'image_path',
         'video_url',
         'gallery',
         'client',
@@ -70,9 +71,19 @@ class Project extends Model
         return $placeholders[$this->type] ?? $placeholders['other'];
     }
 
-    // Get the image URL with fallback to placeholder
+    // Get the image URL with fallback to placeholder (prioritizes uploaded file over URL)
     public function getImageAttribute()
     {
+        if ($this->image_path && file_exists(storage_path('app/public/' . $this->image_path))) {
+            return asset('storage/' . $this->image_path);
+        }
+        
         return $this->image_url ?: $this->placeholder_image;
+    }
+
+    // Check if project has an uploaded image
+    public function hasUploadedImage()
+    {
+        return $this->image_path && file_exists(storage_path('app/public/' . $this->image_path));
     }
 }
