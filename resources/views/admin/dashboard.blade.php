@@ -8,7 +8,7 @@
     <div class="admin-card bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <div class="flex items-center">
             <div class="flex-shrink-0">
-                <div class="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
                     <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                     </svg>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             @if($project->featured)
-                                <span class="bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 text-xs px-2 py-1 rounded">Featured</span>
+                                <span class="bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs px-2 py-1 rounded">Featured</span>
                             @endif
                             @if($project->published)
                                 <span class="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs px-2 py-1 rounded">Published</span>

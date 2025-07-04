@@ -11,22 +11,25 @@ class Service extends Model
         'title',
         'slug',
         'description',
+        'page_subtitle',
         'features',
         'icon',
         'image_url',
+        'image_path',
         'price_from',
         'featured',
         'published',
-        'sort_order',
-        'is_active'
+        'has_dedicated_page',
+        'page_template',
+        'sort_order'
     ];
 
     protected $casts = [
         'featured' => 'boolean',
         'published' => 'boolean',
+        'has_dedicated_page' => 'boolean',
         'price_from' => 'decimal:2',
-        'features' => 'array',
-        'is_active' => 'boolean'
+        'features' => 'array'
     ];
 
     // Auto-generate slug from title
@@ -60,10 +63,7 @@ class Service extends Model
         return $query->orderBy('sort_order');
     }
 
-    public function scopeActive($query)
-    {
-        return $query->where('is_active', true);
-    }
+
 
     // Helper methods
     public function getFeaturesListAttribute()
@@ -103,9 +103,35 @@ class Service extends Model
         return 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop&auto=format';
     }
 
+    // Relationships
+    public function sections()
+    {
+        return $this->hasMany(ServiceSection::class)->ordered();
+    }
+
+    public function publishedSections()
+    {
+        return $this->hasMany(ServiceSection::class)->published()->ordered();
+    }
+
     // Get the image URL with fallback to placeholder
     public function getImageAttribute()
     {
+        if ($this->image_path && \Storage::disk('public')->exists($this->image_path)) {
+            return \Storage::url($this->image_path);
+        }
         return $this->image_url ?: $this->placeholder_image;
+    }
+
+    // Check if uploaded image exists
+    public function hasUploadedImage()
+    {
+        return $this->image_path && \Storage::disk('public')->exists($this->image_path);
+    }
+
+    // Get the route for this service's page
+    public function getRouteAttribute()
+    {
+        return route('services.show', $this->slug);
     }
 }

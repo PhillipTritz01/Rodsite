@@ -9,7 +9,7 @@
 <body class="bg-gray-900 min-h-screen flex items-center justify-center">
     <div class="max-w-md w-full space-y-8 p-8">
         <div class="text-center">
-            <img src="{{ asset('starset-logo.svg') }}" alt="Starset Media" class="h-16 w-auto mx-auto mb-8">
+            <img src="{{ asset('starset-logo.png') }}" alt="Starset Media" class="h-16 w-auto mx-auto mb-8">
             <h2 class="text-3xl font-bold text-white mb-2">Forgot Password</h2>
             <p class="text-gray-400">Enter your email to receive a password reset link</p>
         </div>

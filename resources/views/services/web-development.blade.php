@@ -141,8 +141,8 @@
 
             <!-- JavaScript -->
             <div class="text-center" data-aos="fade-up" data-aos-delay="300">
-                <div class="w-16 h-16 bg-yellow-500/20 rounded-lg mb-4 flex items-center justify-center mx-auto">
-                    <span class="text-2xl font-bold text-yellow-400">JS</span>
+                <div class="w-16 h-16 bg-accent/20 rounded-lg mb-4 flex items-center justify-center mx-auto">
+                    <span class="text-2xl font-bold text-accent">JS</span>
                 </div>
                 <p class="text-gray-300 text-sm">JavaScript</p>
             </div>

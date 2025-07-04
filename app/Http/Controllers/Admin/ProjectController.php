@@ -44,12 +44,24 @@ class ProjectController extends Controller
             'featured' => 'boolean',
             'published' => 'boolean',
             'sort_order' => 'nullable|integer|min:0',
+            'gallery_files' => 'nullable|array',
+            'gallery_files.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:25600',
         ]);
 
         // Handle image upload
         if ($request->hasFile('image_file')) {
             $imagePath = $request->file('image_file')->store('project-images', 'public');
             $validated['image_path'] = $imagePath;
+        }
+
+        // Handle gallery uploads
+        $galleryPaths = [];
+        if ($request->hasFile('gallery_files')) {
+            foreach ($request->file('gallery_files') as $file) {
+                $galleryPath = $file->store('project-galleries', 'public');
+                $galleryPaths[] = $galleryPath;
+            }
+            $validated['gallery'] = $galleryPaths;
         }
 
         // Auto-generate slug if not provided
@@ -60,6 +72,11 @@ class ProjectController extends Controller
         // Ensure boolean fields are set
         $validated['featured'] = $request->has('featured');
         $validated['published'] = $request->has('published');
+
+        // Default sort_order: append to bottom if not provided
+        if (empty($validated['sort_order'])) {
+            $validated['sort_order'] = (Project::max('sort_order') ?? 0) + 1;
+        }
 
         Project::create($validated);
 
@@ -100,6 +117,8 @@ class ProjectController extends Controller
             'featured' => 'boolean',
             'published' => 'boolean',
             'sort_order' => 'nullable|integer|min:0',
+            'gallery_files' => 'nullable|array',
+            'gallery_files.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:25600',
         ]);
 
         // Handle image upload
@@ -114,6 +133,26 @@ class ProjectController extends Controller
             
             // Clear image_url if uploading a new file
             $validated['image_url'] = null;
+        }
+
+        // Handle gallery uploads
+        if ($request->hasFile('gallery_files')) {
+            // Delete old gallery images if they exist
+            if ($project->gallery && is_array($project->gallery)) {
+                foreach ($project->gallery as $oldGalleryPath) {
+                    if (Storage::disk('public')->exists($oldGalleryPath)) {
+                        Storage::disk('public')->delete($oldGalleryPath);
+                    }
+                }
+            }
+            
+            // Upload new gallery images
+            $galleryPaths = [];
+            foreach ($request->file('gallery_files') as $file) {
+                $galleryPath = $file->store('project-galleries', 'public');
+                $galleryPaths[] = $galleryPath;
+            }
+            $validated['gallery'] = $galleryPaths;
         }
 
         // Update slug if title changed
@@ -139,6 +178,15 @@ class ProjectController extends Controller
         // Delete associated image file if it exists
         if ($project->image_path && Storage::disk('public')->exists($project->image_path)) {
             Storage::disk('public')->delete($project->image_path);
+        }
+        
+        // Delete gallery images if they exist
+        if ($project->gallery && is_array($project->gallery)) {
+            foreach ($project->gallery as $galleryPath) {
+                if (Storage::disk('public')->exists($galleryPath)) {
+                    Storage::disk('public')->delete($galleryPath);
+                }
+            }
         }
         
         $project->delete();

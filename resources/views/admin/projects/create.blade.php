@@ -169,6 +169,30 @@
                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+            <!-- Project Gallery -->
+            <div class="mt-6">
+                <h3 class="text-base font-medium text-gray-900 mb-4">Project Gallery</h3>
+                <div>
+                    <label for="gallery_files" class="block text-sm font-medium text-gray-700 mb-2">
+                        Upload Gallery Images
+                    </label>
+                    <input type="file" name="gallery_files[]" id="gallery_files" accept="image/*" multiple
+                           class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <p class="text-sm text-gray-500 mt-1">Select multiple images for the project gallery. Supported formats: JPEG, PNG, JPG, GIF, WebP. Max size per file: 25MB</p>
+                    @error('gallery_files')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                    @error('gallery_files.*')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                
+                <!-- Gallery Preview -->
+                <div id="gallery_preview" class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4" style="display: none;">
+                    <!-- Preview images will be inserted here -->
+                </div>
+            </div>
         </div>
 
         <div class="bg-white rounded-lg shadow p-6">
@@ -234,6 +258,40 @@ document.addEventListener('DOMContentLoaded', function() {
     
     uploadOption.addEventListener('change', toggleImageOptions);
     urlOption.addEventListener('change', toggleImageOptions);
+    
+    // Gallery preview functionality
+    const galleryInput = document.getElementById('gallery_files');
+    const galleryPreview = document.getElementById('gallery_preview');
+    
+    galleryInput.addEventListener('change', function(e) {
+        const files = Array.from(e.target.files);
+        galleryPreview.innerHTML = '';
+        
+        if (files.length > 0) {
+            galleryPreview.style.display = 'grid';
+            
+            files.forEach((file, index) => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const previewDiv = document.createElement('div');
+                        previewDiv.className = 'relative group';
+                        previewDiv.innerHTML = `
+                            <img src="${e.target.result}" alt="Gallery image ${index + 1}" 
+                                 class="w-full h-24 object-cover rounded-lg border border-gray-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg flex items-center justify-center">
+                                <span class="text-white text-xs">${file.name}</span>
+                            </div>
+                        `;
+                        galleryPreview.appendChild(previewDiv);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        } else {
+            galleryPreview.style.display = 'none';
+        }
+    });
 });
 </script>
 @endsection 

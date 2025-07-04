@@ -86,4 +86,22 @@ class Project extends Model
     {
         return $this->image_path && file_exists(storage_path('app/public/' . $this->image_path));
     }
+
+    // Get gallery images with proper URLs
+    public function getGalleryImagesAttribute()
+    {
+        if (!$this->gallery || !is_array($this->gallery)) {
+            return [];
+        }
+        
+        return array_map(function($imagePath) {
+            return asset('storage/' . $imagePath);
+        }, $this->gallery);
+    }
+
+    // Check if project has gallery images
+    public function hasGallery()
+    {
+        return $this->gallery && is_array($this->gallery) && count($this->gallery) > 0;
+    }
 }

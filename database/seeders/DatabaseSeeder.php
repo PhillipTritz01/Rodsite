@@ -16,7 +16,16 @@ class DatabaseSeeder extends Seeder
         // Create admin users and team members
         $this->call([
             AdminUserSeeder::class,
+            SampleDataSeeder::class,
+            HomePageContentSeeder::class,
+            ServicesSeeder::class,
+            ServicesWithPagesSeeder::class,
             TeamMembersSeeder::class,
+            FilmSectionsSeeder::class,
+            PhotographySectionsSeeder::class,
+            PhotographyGalleryFoldersSeeder::class,
+            PhotographyCataloguesSeeder::class,
+            RemoveUnwantedPhotographySeeder::class,
         ]);
 
         // User::factory(10)->create();

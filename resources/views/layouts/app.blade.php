@@ -21,15 +21,22 @@
     
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <!-- Disable automatic scroll restoration (must run early) -->
+    <script>
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+    </script>
 </head>
 <body class="font-sans antialiased bg-gray-900 text-white">
-    <!-- Navigation -->
-    <nav class="bg-primary/90 backdrop-blur-sm fixed w-full z-50 border-b border-accent/20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+    <!-- Enlarged non-sticky nav -->
+    <nav class="bg-gray-900 border-b border-accent/20 py-2">
+        <div class="w-full px-2 sm:px-4 lg:px-6">
+            <div class="flex justify-between h-28">
                 <div class="flex items-center">
-                    <a href="{{ route('home') }}" class="text-2xl font-bold text-accent">
-                        Starset Media
+                    <a href="{{ route('home') }}" class="flex items-center">
+                        <img src="{{ asset('starset-logo.png') }}" alt="Starset Media" class="h-28 w-auto">
                     </a>
                 </div>
                 
@@ -38,10 +45,9 @@
                     <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">HOME</a>
                     <a href="{{ route('services') }}" class="nav-link {{ request()->routeIs('services') ? 'active' : '' }}">SERVICES</a>
                     <a href="{{ route('film') }}" class="nav-link {{ request()->routeIs('film') ? 'active' : '' }}">FILMOGRAPHY</a>
+                    <a href="{{ route('portfolio') }}" class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">PORTFOLIO</a>
                     <a href="{{ route('services.photography') }}" class="nav-link {{ request()->routeIs('services.photography') ? 'active' : '' }}">PHOTOGRAPHY</a>
                     <a href="{{ route('crew') }}" class="nav-link {{ request()->routeIs('crew') ? 'active' : '' }}">CREW</a>
-                    <a href="{{ route('portfolio') }}" class="nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">PORTFOLIO</a>
-                    <a href="{{ route('contact') }}" class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">CONTACT</a>
                 </div>
 
                 <!-- Mobile menu button -->
@@ -56,21 +62,20 @@
         </div>
 
         <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="md:hidden bg-primary/95 backdrop-blur-sm border-t border-accent/20 hidden">
+        <div id="mobile-menu" class="md:hidden bg-gray-900 border-t border-accent/20 hidden">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'active' : '' }}">HOME</a>
                 <a href="{{ route('services') }}" class="mobile-nav-link {{ request()->routeIs('services') ? 'active' : '' }}">SERVICES</a>
                 <a href="{{ route('film') }}" class="mobile-nav-link {{ request()->routeIs('film') ? 'active' : '' }}">FILMOGRAPHY</a>
-                                    <a href="{{ route('services.photography') }}" class="mobile-nav-link {{ request()->routeIs('services.photography') ? 'active' : '' }}">PHOTOGRAPHY</a>
-                <a href="{{ route('crew') }}" class="mobile-nav-link {{ request()->routeIs('crew') ? 'active' : '' }}">CREW</a>
                 <a href="{{ route('portfolio') }}" class="mobile-nav-link {{ request()->routeIs('portfolio') ? 'active' : '' }}">PORTFOLIO</a>
-                <a href="{{ route('contact') }}" class="mobile-nav-link {{ request()->routeIs('contact') ? 'active' : '' }}">CONTACT</a>
+                <a href="{{ route('services.photography') }}" class="mobile-nav-link {{ request()->routeIs('services.photography') ? 'active' : '' }}">PHOTOGRAPHY</a>
+                <a href="{{ route('crew') }}" class="mobile-nav-link {{ request()->routeIs('crew') ? 'active' : '' }}">CREW</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-16">
+    <main>
         @yield('content')
     </main>
 
@@ -138,11 +143,11 @@
     <script>
         // Initialize AOS with enhanced settings
         AOS.init({
-            duration: 800,
+            duration: 500,            // faster animation
             once: true,
-            offset: 120,
+            offset: 80,              // trigger slightly sooner in viewport
             easing: 'ease-out-cubic',
-            delay: 100,
+            delay: 0,                // no global delay
             anchorPlacement: 'top-bottom'
         });
         
@@ -238,8 +243,8 @@
         /* Custom scroll animations */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
+            transform: translateY(20px); /* shorter travel */
+            transition: all 0.4s ease-out; /* faster */
         }
         
         .animate-on-scroll.animate-in {
@@ -276,5 +281,7 @@
             overflow-x: hidden;
         }
     </style>
+
+    <!-- (Moved scrollRestoration script to head) -->
 </body>
 </html> 

@@ -47,8 +47,8 @@
             --admin-text-secondary-dark: #cbd5e1;
             --admin-text-muted-light: #94a3b8;
             --admin-text-muted-dark: #e2e8f0;
-            --admin-accent: #f59e0b;
-            --admin-accent-hover: #d97706;
+            --admin-accent: #FFB300;
+            --admin-accent-hover: #E6A000;
             --admin-sidebar-light: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             --admin-sidebar-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
@@ -203,12 +203,29 @@
         }
 
         .text-secondary-admin {
-            color: var(--admin-text-secondary-light);
+            color: #4b5563 !important; /* Darker gray for better contrast in light mode */
         }
 
-        .dark .text-secondary-admin,
-        .dark .text-muted {
-            color: var(--admin-text-secondary-dark) !important;
+        .dark .text-secondary-admin {
+            color: #d1d5db !important; /* Lighter gray for better contrast in dark mode */
+        }
+
+        /* Card headers with colored backgrounds - ensure text is always readable */
+        .bg-warning .text-dark {
+            color: #1f2937 !important; /* Very dark text on warning background */
+        }
+
+        .dark .bg-warning .text-dark {
+            color: #1f2937 !important; /* Keep dark text on warning background in dark mode */
+        }
+
+        /* Ensure text-dark is always readable */
+        .text-dark {
+            color: #1f2937 !important; /* Very dark gray for light mode */
+        }
+
+        .dark .text-dark {
+            color: var(--admin-text-primary-dark) !important; /* Light text for dark mode */
         }
 
         /* Improved text contrast for better readability */
@@ -244,26 +261,138 @@
             color: var(--admin-text-primary-dark) !important;
         }
 
-        /* Form Controls - All dark in dark mode */
+        /* Form text and muted text - Better contrast */
+        .form-text {
+            color: #6b7280 !important; /* Darker gray for light mode */
+        }
+
+        .dark .form-text {
+            color: #d1d5db !important; /* Lighter gray for dark mode */
+        }
+
+        .text-muted {
+            color: #6b7280 !important; /* Darker gray for light mode */
+        }
+
+        .dark .text-muted {
+            color: #d1d5db !important; /* Lighter gray for dark mode */
+        }
+
+        /* Warning text - Better contrast */
+        .text-warning {
+            color: #d97706 !important; /* Darker orange for light mode */
+        }
+
+        .dark .text-warning {
+            color: #fbbf24 !important; /* Brighter yellow for dark mode */
+        }
+
+        /* Success text - Better contrast */
+        .text-success {
+            color: #059669 !important; /* Darker green for light mode */
+        }
+
+        .dark .text-success {
+            color: #10b981 !important; /* Brighter green for dark mode */
+        }
+
+        /* Info text - Better contrast */
+        .text-info {
+            color: #0369a1 !important; /* Darker blue for light mode */
+        }
+
+        .dark .text-info {
+            color: #3b82f6 !important; /* Brighter blue for dark mode */
+        }
+
+        /* Primary text - Better contrast */
+        .text-primary {
+            color: #1d4ed8 !important; /* Darker blue for light mode */
+        }
+
+        .dark .text-primary {
+            color: #60a5fa !important; /* Brighter blue for dark mode */
+        }
+
+        /* Form Labels - Better visibility */
+        .form-label {
+            color: #374151 !important;
+            font-weight: 600;
+        }
+
+        .dark .form-label {
+            color: #f3f4f6 !important;
+        }
+
+        /* Input Groups */
+        .input-group-text {
+            background-color: #f3f4f6;
+            border-color: #d1d5db;
+            color: #374151;
+        }
+
+        .dark .input-group-text {
+            background-color: #4b5563 !important;
+            border-color: #6b7280 !important;
+            color: #f3f4f6 !important;
+        }
+
+        /* Form Controls - Better visibility in both modes */
+        .form-control,
+        .form-select,
         .form-control-dark {
-            background-color: var(--admin-card-light);
-            border-color: var(--admin-border-light);
-            color: var(--admin-text-primary-light);
+            background-color: #ffffff;
+            border-color: #d1d5db;
+            color: #1f2937 !important;
+        }
+
+        .form-control::placeholder,
+        .form-select::placeholder {
+            color: #9ca3af !important;
         }
 
         .dark .form-control,
         .dark .form-select,
-        .dark .form-control-dark {
-            background-color: var(--admin-card-dark) !important;
-            border-color: var(--admin-border-dark) !important;
-            color: var(--admin-text-primary-dark) !important;
+        .dark .form-control-dark,
+        .dark textarea.form-control,
+        .dark input[type="text"].form-control,
+        .dark input[type="email"].form-control,
+        .dark input[type="url"].form-control,
+        .dark input[type="number"].form-control,
+        .dark input[type="file"].form-control {
+            background-color: #374151 !important;
+            border-color: #4b5563 !important;
+            color: #f9fafb !important;
+        }
+
+        .dark .form-control::placeholder,
+        .dark .form-select::placeholder,
+        .dark textarea.form-control::placeholder,
+        .dark input[type="text"].form-control::placeholder,
+        .dark input[type="email"].form-control::placeholder,
+        .dark input[type="url"].form-control::placeholder,
+        .dark input[type="number"].form-control::placeholder {
+            color: #9ca3af !important;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            background-color: #ffffff !important;
+            border-color: var(--admin-accent) !important;
+            color: #1f2937 !important;
+            box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.25) !important;
         }
 
         .dark .form-control:focus,
-        .dark .form-select:focus {
-            background-color: var(--admin-card-dark) !important;
+        .dark .form-select:focus,
+        .dark textarea.form-control:focus,
+        .dark input[type="text"].form-control:focus,
+        .dark input[type="email"].form-control:focus,
+        .dark input[type="url"].form-control:focus,
+        .dark input[type="number"].form-control:focus {
+            background-color: #374151 !important;
             border-color: var(--admin-accent) !important;
-            color: var(--admin-text-primary-dark) !important;
+            color: #f9fafb !important;
             box-shadow: 0 0 0 0.2rem rgba(245, 158, 11, 0.25) !important;
         }
 
@@ -568,7 +697,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 font-sans antialiased h-full overflow-hidden">
+<body class="bg-gray-100 dark:bg-gray-900 font-sans antialiased h-full">
     <div class="flex h-screen w-full">
         <!-- Enhanced Sidebar -->
         <div class="admin-sidebar w-56 text-white flex-shrink-0 overflow-hidden">
@@ -581,7 +710,7 @@
             </div>
             
             <!-- Navigation -->
-            <nav class="flex-1 px-3 py-4 overflow-y-auto min-h-0">
+            <nav class="flex-1 px-3 py-4 min-h-0">
                 <!-- Overview Section -->
                 <div class="nav-section">
                     <div class="nav-section-title">
@@ -637,6 +766,8 @@
                         @endif
                     </a>
                     
+
+                    
                     <!-- Home Page -->
                     <a href="{{ route('admin.homepage.index') }}" class="admin-nav-link {{ request()->routeIs('admin.homepage.*') ? 'active' : '' }}">
                         <i class="fas fa-home"></i>
@@ -691,6 +822,10 @@
                             <span class="text-white font-medium">{{ \App\Models\Service::count() }}</span>
                         </div>
                         <div class="flex justify-between text-xs">
+                            <span class="text-gray-400 dark:text-gray-300">Service Sections</span>
+                            <span class="text-white font-medium">{{ \App\Models\ServiceSection::count() }}</span>
+                        </div>
+                        <div class="flex justify-between text-xs">
                             <span class="text-gray-400 dark:text-gray-300">Team</span>
                             <span class="text-white font-medium">{{ \App\Models\CrewMember::count() }}</span>
                         </div>
@@ -725,6 +860,7 @@
                         </button>
                         
                         <!-- User Menu Dropdown -->
+                        @if(auth()->check())
                         <div class="position-relative" id="userMenuContainer">
                             <button class="btn btn-link d-flex align-items-center text-decoration-none border-0 bg-transparent p-2" 
                                     type="button" 
@@ -789,12 +925,13 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </header>
             
             <!-- Main Content Area -->
-            <main class="flex-1 overflow-y-auto admin-content p-6 min-h-0">
+            <main class="flex-1 admin-content p-6 min-h-0">
                 @if(session('success'))
                     <div class="alert alert-success-admin alert-dismissible fade show mb-6" role="alert">
                         <i class="fas fa-check-circle me-2"></i>

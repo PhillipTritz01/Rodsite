@@ -25,13 +25,17 @@ class PageController extends Controller
         return view('services', compact('services'));
     }
 
-    public function film()
+    public function showService($slug)
     {
-        $filmProjects = Project::published()->where('type', 'film')->orderBy('sort_order')->orderBy('created_at', 'desc')->get();
-        return view('film', compact('filmProjects'));
+        $service = Service::where('slug', $slug)
+                         ->where('published', true)
+                         ->where('has_dedicated_page', true)
+                         ->firstOrFail();
+        
+        $sections = $service->publishedSections;
+        
+        return view('services.show', compact('service', 'sections'));
     }
-
-
 
     public function crew()
     {
@@ -55,16 +59,7 @@ class PageController extends Controller
         return view('contact');
     }
 
-    public function filmAndVideoProduction()
-    {
-        return view('services.film-and-video-production');
-    }
 
-    public function photography()
-    {
-        $photographyProjects = Project::published()->where('type', 'photography')->orderBy('sort_order')->orderBy('created_at', 'desc')->take(6)->get();
-        return view('services.photography', compact('photographyProjects'));
-    }
 
     public function graphicDesign()
     {
@@ -84,5 +79,26 @@ class PageController extends Controller
     public function somethingElse()
     {
         return view('services.something-else');
+    }
+
+    public function airShowGallery()
+    {
+        // Redirect to Air Show Photography project
+        $airShowProject = Project::where('title', 'Air Show Photography')->first();
+        if ($airShowProject) {
+            return redirect()->route('project.show', $airShowProject->slug);
+        }
+        
+        // Fallback to portfolio if project not found
+        return redirect()->route('portfolio');
+    }
+
+    public function showProject($slug)
+    {
+        $project = Project::where('slug', $slug)
+                         ->where('published', true)
+                         ->firstOrFail();
+        
+        return view('project.show', compact('project'));
     }
 }

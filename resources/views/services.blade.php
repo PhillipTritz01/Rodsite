@@ -128,9 +128,61 @@
         </div>
     </section>
 
-    <!-- Service 6: Something Else (Image Left) -->
+    <!-- Dynamic Services from CMS -->
+    @php $staticCount = 5; /* number of hard-coded sections above */ @endphp
+    @forelse($services->where('has_dedicated_page', true) as $service)
+        @php
+            // Ensure alternation continues from the last static section.
+            $serviceNumber = $loop->iteration + $staticCount;
+            $isEven = $serviceNumber % 2 == 0; // even index => image left
+        @endphp
+        
+        <!-- Service {{ $serviceNumber }}: {{ $service->title }} ({{ $isEven ? 'Image Left' : 'Image Right' }}) -->
+        <section class="relative my-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+            <div class="flex flex-col {{ $isEven ? 'lg:flex-row-reverse' : 'lg:flex-row' }} items-center gap-12">
+                <div class="w-full lg:w-1/2">
+                    <article class="py-8">
+                        <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">{{ $service->title }}</h3>
+                        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                            {{ $service->description }}
+                        </p>
+                        <a href="{{ route('services.show', $service->slug) }}" class="inline-block bg-accent hover:bg-accent/80 text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+                            Learn More
+                        </a>
+                    </article>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                        @if($service->image_url || $service->image_path)
+                            <img src="{{ $service->image_url ?: asset('storage/' . $service->image_path) }}"
+                                 alt="{{ $service->title }}"
+                                 class="w-full h-full object-cover" />
+                        @else
+                            <div class="w-full h-full bg-gray-700 flex items-center justify-center">
+                                @if($service->icon)
+                                    <i class="{{ $service->icon }} text-6xl text-accent"></i>
+                                @else
+                                    <i class="fas fa-cogs text-6xl text-accent"></i>
+                                @endif
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </section>
+    @empty
+        <!-- No dynamic services -->
+    @endforelse
+
+    @php
+        $totalRendered = $staticCount + $services->where('has_dedicated_page', true)->count();
+        $somethingElseNumber = $totalRendered + 1;
+        $somethingElseEven = $somethingElseNumber % 2 == 0; // decide side
+    @endphp
+
+    <!-- Service {{ $somethingElseNumber }}: Something Else (Image {{ $somethingElseEven ? 'Left' : 'Right' }}) -->
     <section class="relative my-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
-        <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+        <div class="flex flex-col {{ $somethingElseEven ? 'lg:flex-row-reverse' : 'lg:flex-row' }} items-center gap-12">
             <div class="w-full lg:w-1/2">
                 <article class="py-8">
                     <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white">Something Else?</h3>

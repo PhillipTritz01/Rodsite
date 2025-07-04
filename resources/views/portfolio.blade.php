@@ -50,12 +50,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
                 @foreach($projects as $project)
-                    <div class="project-item group cursor-pointer" data-type="{{ $project->type }}" data-aos="fade-up">
+                    <div class="project-item group cursor-pointer" data-type="{{ $project->type }}" data-aos="fade-up" onclick="window.location.href='{{ route('project.show', $project->slug) }}'">
                         <div class="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-all duration-300 hover:scale-105">
                             <div class="aspect-video relative overflow-hidden">
                                 <img src="{{ $project->image }}" 
                                      alt="{{ $project->title }}" 
-                                     class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                     class="w-full h-full object-cover object-top bg-black group-hover:scale-110 transition-transform duration-300">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div class="absolute bottom-4 left-4 right-4">
                                         <span class="inline-block bg-accent text-black px-3 py-1 rounded-full text-sm font-semibold mb-2">

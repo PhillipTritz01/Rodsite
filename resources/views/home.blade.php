@@ -2,7 +2,7 @@
 
 @section('content')
 {{-- HERO with video background --}}
-<section class="relative min-h-screen flex items-center text-white overflow-hidden">
+<section class="relative h-screen flex items-start pt-8 md:pt-10 pb-12 md:pb-20 text-white overflow-hidden">
     {{-- ❶ Full-bleed video background --}}
     <video
         class="absolute inset-0 w-full h-full object-cover pointer-events-none"
@@ -26,49 +26,51 @@
 
     {{-- ❸ Foreground content --}}
     <div class="relative z-10 container mx-auto px-4 lg:px-8 max-w-6xl">
-        <div class="text-center flex flex-col justify-center items-center min-h-screen">
+        <div class="text-center flex flex-col justify-start items-center h-full mt-0">
             <!-- Starset Media Logo -->
             <div data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-out-quart">
                 <div class="flex justify-center">
-                    <img src="{{ asset('starset-logo.svg') }}" alt="Starset Media" class="h-60 md:h-72 lg:h-80 xl:h-96 w-auto max-w-full animate-on-scroll">
+                    <img src="{{ asset('starset-logo.png') }}" alt="Starset Media" class="w-auto max-w-full max-h-[80vh] animate-on-scroll">
                 </div>
             </div>
 
-            <!-- Tagline -->
-            <h2 class="mt-10 text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight max-w-4xl mx-auto animate-on-scroll" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                Passion, Pride, <span class="text-white">Creativity.</span>
-            </h2>
-            <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-on-scroll" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                Our work showcases each of these values. We are not hampered by the norms and conventions of art.
-            </p>
 
-            <!-- Call To Action -->
-            <div class="mt-10 animate-on-scroll" data-aos="fade-up" data-aos-delay="700" data-aos-duration="1000">
-                <a href="#services" class="inline-block bg-accent hover:bg-accent/80 text-black font-semibold px-8 py-4 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105">
-                    View Our Services
-                </a>
-            </div>
         </div>
     </div>
     
     <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce" data-aos="fade-up" data-aos-delay="800" data-aos-duration="600">
+    <div class="absolute bottom-16 md:bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce" data-aos="fade-up" data-aos-delay="800" data-aos-duration="600">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
         </svg>
     </div>
 </section>
 
+<!-- Spacing between video hero and photo section -->
+<div class="h-16 md:h-24 lg:h-32 bg-gray-900"></div>
+
 <!-- Full-Screen Photo Section -->
-<section class="relative min-h-screen bg-black mt-16">
+<section class="relative min-h-screen bg-black overflow-hidden">
     <img src="{{ $homePage->fullscreen_photo }}" 
          alt="Team collaboration" 
          class="absolute inset-0 w-full h-full object-cover">
+    
+    <!-- Vision Text Overlay -->
+    <div class="absolute bottom-8 left-8 xl:left-16 z-10" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+        <div class="text-left">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-accent mb-4 tracking-wider" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                VISION
+            </h2>
+            <p class="text-white text-lg md:text-xl lg:text-2xl max-w-2xl leading-relaxed md:pr-8" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">
+                Passion, Pride, Creativity. Our work showcases each of these values. We are not hampered by the norms and conventions of art.
+            </p>
+        </div>
+    </div>
 </section>
 
 <!-- Filmography Project Carousel -->
 <section class="relative min-h-screen bg-gray-900 flex flex-col items-center justify-center py-12" data-aos="fade-up" data-aos-duration="1000">
-    <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center text-white">Our Latest Film Projects</h2>
+    <h2 class="text-4xl md:text-5xl font-bold mb-8 md:mb-12 text-center text-white">Our Latest Film Projects</h2>
     
     <!-- Swiper -->
     <div class="swiper-container film-carousel w-full">
@@ -108,23 +110,23 @@
         <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <!-- Add Navigation -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next top-1/2 -translate-y-1/2 lg:top-1/3"></div>
+        <div class="swiper-button-prev top-1/2 -translate-y-1/2 lg:top-1/3"></div>
     </div>
 </section>
 
 <!-- Service Header -->
-<div id="services" class="mt-24 mb-16 px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-duration="1000">
-    <h2 class="text-5xl md:text-7xl text-accent" data-aos="fade-up" data-aos-delay="200">Our Services</h2>
-</div>
+<section id="services" class="my-24 text-center px-4 sm:px-6 lg:px-8" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="text-4xl lg:text-6xl 2xl:text-7xl text-accent" data-aos="fade-up" data-aos-delay="200">Our Services</h2>
+</section>
 
 <!-- All services in one vertical stack -->
 <div>
 
 <!-- Film & Video Production Section -->
-<section id="film-video-service" class="relative overflow-hidden">
+<section id="film-video-service" class="relative overflow-hidden mb-20 lg:mb-32 min-h-[80vh]">
     <!-- Sticky panel that will wipe-open - only visible within this section -->
-    <div class="absolute top-0 right-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
+    <div class="hidden lg:block absolute top-0 right-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
         <div class="sticky top-0 h-[80vh]">
             <img id="service-media"
                  src="{{ $homePage->film_service_bg }}"
@@ -133,7 +135,7 @@
     </div>
 
     <!-- Film/Video Production Service Card -->
-    <div class="w-[40%] pr-8">
+    <div class="w-full lg:w-[40%] pr-0 lg:pr-8">
         <article
             class="service-card group flex items-center gap-8 py-24 px-6 pb-64 relative z-20"
             data-media="{{ $homePage->film_service_bg }}">
@@ -156,9 +158,9 @@
 </section>
 
 <!-- Photography Section -->
-<section id="photography-service" class="relative overflow-hidden">
+<section id="photography-service" class="relative overflow-hidden mb-20 lg:mb-32 min-h-[80vh]">
     <!-- Sticky panel that will wipe-open - only visible within this section (LEFT SIDE) -->
-    <div class="absolute top-0 left-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
+    <div class="hidden lg:block absolute top-0 left-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
         <div class="sticky top-0 h-[80vh]">
             <img id="photography-media"
                  src="{{ $homePage->photography_service_bg }}"
@@ -167,7 +169,7 @@
     </div>
 
     <!-- Photography Service Card (RIGHT SIDE) -->
-    <div class="w-[40%] pl-8 ml-auto">
+    <div class="w-full lg:w-[40%] pl-0 lg:pl-8 lg:ml-auto">
         <article
             class="photography-card group flex items-center gap-8 py-24 px-6 pb-64 relative z-20"
             data-media="{{ $homePage->photography_service_bg }}"
@@ -192,9 +194,9 @@
 </section>
 
 <!-- Graphic Design Section -->
-<section id="design-service" class="relative overflow-hidden">
+<section id="design-service" class="relative overflow-hidden mb-20 lg:mb-32 min-h-[80vh]">
     <!-- Sticky panel that will wipe-open - only visible within this section -->
-    <div class="absolute top-0 right-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
+    <div class="hidden lg:block absolute top-0 right-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
         <div class="sticky top-0 h-[80vh]">
             <img id="design-media"
                  src="{{ $homePage->design_service_bg }}"
@@ -203,7 +205,7 @@
     </div>
 
     <!-- Graphic Design Service Card -->
-    <div class="w-[40%] pr-8">
+    <div class="w-full lg:w-[40%] pr-0 lg:pr-8">
         <article
             class="design-card group flex items-center gap-8 py-24 px-6 pb-64 relative z-20"
             data-media="{{ $homePage->design_service_bg }}"
@@ -227,9 +229,9 @@
 </section>
 
 <!-- Something Else Section -->
-<section id="other-service" class="relative overflow-hidden">
+<section id="other-service" class="relative overflow-hidden mb-20 lg:mb-32 min-h-[80vh]">
     <!-- Sticky panel that will wipe-open - only visible within this section (LEFT SIDE) -->
-    <div class="absolute top-0 left-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
+    <div class="hidden lg:block absolute top-0 left-0 w-[60%] h-full overflow-hidden pointer-events-none z-10">
         <div class="sticky top-0 h-[80vh]">
             <img id="other-media"
                  src="{{ $homePage->other_service_bg }}"
@@ -238,7 +240,7 @@
     </div>
 
     <!-- Something Else Service Card (RIGHT SIDE) -->
-    <div class="w-[40%] pl-8 ml-auto">
+    <div class="w-full lg:w-[40%] pl-0 lg:pl-8 lg:ml-auto">
         <article
             class="other-card group flex items-center gap-8 py-24 px-6 pb-64 relative z-20"
             data-media="{{ $homePage->other_service_bg }}"
@@ -253,7 +255,7 @@
                 <p class="max-w-md text-lg text-gray-300 mb-6 leading-relaxed">
                     Some projects just don't fit into every category. Let us know what you need and we will be happy to make it come true. We love creative challenges and unique projects.
                 </p>
-                <a href="{{ route('services.something-else') }}" class="inline-block bg-accent hover:bg-accent/80 text-black px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
+                <a href="{{ route('services.something-else') }}" class="inline-block bg-accent hover:bg-accent/80 text-black px-6 md:px-8 py-4 rounded-lg font-semibold transition-all duration-300 hover:scale-105">
                     Discuss Your Project
                 </a>
             </div>

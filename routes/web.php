@@ -8,16 +8,31 @@ use App\Http\Controllers\Admin\AuthController;
 // Main website routes
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/services', [PageController::class, 'services'])->name('services');
-Route::get('/services/film-and-video-production', [PageController::class, 'filmAndVideoProduction'])->name('services.film-video');
-Route::get('/services/photography', [PageController::class, 'photography'])->name('services.photography');
+// Redirect old hardcoded routes to dynamic service pages
+Route::get('/services/film-and-video-production', function () {
+    return redirect()->route('services.show', 'video-production');
+})->name('services.film-video');
+
+Route::get('/services/photography', function () {
+    return redirect()->route('services.show', 'professional-photography');
+})->name('services.photography');
 Route::get('/services/graphic-design', [PageController::class, 'graphicDesign'])->name('services.graphic-design');
 Route::get('/services/web-development', [PageController::class, 'webDevelopment'])->name('services.web-development');
 Route::get('/services/podcast-production', [PageController::class, 'podcastProduction'])->name('services.podcast');
 Route::get('/services/something-else', [PageController::class, 'somethingElse'])->name('services.something-else');
-Route::get('/film', [PageController::class, 'film'])->name('film');
+
+// Dynamic service pages
+Route::get('/services/{slug}', [PageController::class, 'showService'])->name('services.show');
+
+// Redirect old filmography and photography routes to portfolio
+Route::get('/film', function () {
+    return redirect()->route('portfolio');
+})->name('film');
 
 Route::get('/crew', [PageController::class, 'crew'])->name('crew');
 Route::get('/portfolio', [PageController::class, 'portfolio'])->name('portfolio');
+Route::get('/gallery/air-show', [PageController::class, 'airShowGallery'])->name('gallery.air-show');
+Route::get('/project/{slug}', [PageController::class, 'showProject'])->name('project.show');
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // Contact form handling
@@ -51,6 +66,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('projects', App\Http\Controllers\Admin\ProjectController::class);
     Route::resource('crew', App\Http\Controllers\Admin\CrewController::class);
     Route::resource('services', App\Http\Controllers\Admin\ServiceController::class);
+    Route::resource('services.sections', App\Http\Controllers\Admin\ServiceSectionController::class)->except(['show']);
+
     
     // Home Page Management
     Route::get('homepage', [App\Http\Controllers\Admin\HomePageController::class, 'index'])->name('homepage.index');
@@ -58,6 +75,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::put('homepage', [App\Http\Controllers\Admin\HomePageController::class, 'update'])->name('homepage.update');
     Route::delete('homepage/file', [App\Http\Controllers\Admin\HomePageController::class, 'deleteFile'])->name('homepage.deleteFile');
 });
+
 
 // API Routes for Headless CMS
 Route::prefix('api/v1')->name('api.')->group(function () {

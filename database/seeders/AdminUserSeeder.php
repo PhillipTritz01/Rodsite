@@ -33,5 +33,15 @@ class AdminUserSeeder extends Seeder
                 'email_verified_at' => now(),
             ]
         );
+
+        // Create Phillip Tritz admin user
+        User::firstOrCreate(
+            ['email' => 'phillip.tritz@gmail.com'],
+            [
+                'name' => 'Phillip Tritz',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+            ]
+        );
     }
 } 
